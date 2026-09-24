@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Team 2026-27 | STEAM Robotics · FTC 34690</title>
+<meta name="description" content="I 12 membri di STEAM Robotics FTC Team 34690 per la stagione 2026/27: mentor, senior e studenti tra meccanica, CAD, Java e design." />
+<link rel="canonical" href="https://steamrobotics.it/2026-27/team/" />
+<meta property="og:title" content="Team 2026-27 | STEAM Robotics" />
+<meta property="og:description" content="Mentor e studenti del team FTC 34690, stagione 2026/27." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://steamrobotics.it/2026-27/team/" />
+<meta property="og:image" content="https://steamrobotics.it/assets/og-placeholder.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+<style>
+/* Font locali del sito */
+@font-face { font-family: "Inter"; src: url("../../Font/inter/static/inter-latin-200-normal.woff2") format("woff2"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../../Font/inter/static/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../../Font/inter/static/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "VT323"; src: url("../../Font/vt323/vt323-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+/* Palette cyber: nero, grigio scurissimo, magenta e viola neon */
+:root { --void: #000000; --panel: #121214; --line: rgba(255,255,255,.1); --mag: #ec4899; --pur: #c084fc; --txt: #f4f4f5; --mut: #a1a1aa; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--void); color: var(--txt); font-family: Inter, system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 4rem); }
+/* Menù: sticky con blur, pill di navigazione scorrevole su mobile */
+
+
+
+
+
+
+
+
+
+
+
+.cta { background: var(--mag); color: #fff; font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .025em; border-radius: 999px; padding: .8rem 1.3rem; text-decoration: none; box-shadow: 0 0 24px rgba(236,72,153,.35); flex: none; }
+
+@media (max-width: 640px) {
+
+
+  .cta { font-size: .7rem; padding: .65rem 1rem; }
+}
+/* Hero compatto */
+.team-hero { display: grid; gap: 2rem; padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(1.5rem, 4vw, 2.5rem); }
+@media (min-width: 960px) { .team-hero { grid-template-columns: 1.4fr 1fr; align-items: end; } }
+.kicker { color: var(--mag); font-size: .8rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; margin: 0 0 1rem; }
+h1, h2, h3, h1.big, h2.big, .sec-heading { font-family: "VT323", "Courier New", monospace; font-weight: 400; letter-spacing: 0.02em; }
+h1.big { margin: 0 0 1rem; font-size: clamp(3.8rem, 9.5vw, 6.2rem); line-height: 0.95; font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; }
+h1.big .scan { background: linear-gradient(180deg, #fff 0 42%, var(--mag) 42% 46%, #fff 46% 72%, var(--pur) 72% 76%, #fff 76%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { color: var(--mut); font-size: 1.05rem; line-height: 1.6; margin: 0; max-width: 56ch; }
+.livebox { border: 1px solid var(--line); border-radius: 16px; background: rgba(18,18,20,.7); padding: 1.25rem 1.4rem; }
+.live-row { display: flex; align-items: center; gap: .5rem; font-size: .7rem; letter-spacing: .18em; color: var(--mut); }
+.dot { width: 8px; height: 8px; border-radius: 999px; background: var(--mag); box-shadow: 0 0 12px var(--mag); animation: blink 1.6s infinite; }
+@keyframes blink { 50% { opacity: .35; } }
+.live-num { font-size: clamp(2.4rem, 4vw, 3.2rem); font-weight: 600; margin: .4rem 0 .2rem; }
+.live-cap { color: var(--mut); font-size: .72rem; letter-spacing: .14em; }
+/* Linea orizzontale pinnata: resta fissa mentre scorri */
+.rail-pin { position: relative; height: 380vh; }
+.rail-stage { position: sticky; top: 0; height: 100vh; height: 100dvh; overflow: hidden; display: flex; align-items: center; perspective: 1350px; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(236,72,153,.06), transparent); }
+.rail-track { display: flex; gap: 24px; padding: 0 50vw; will-change: transform; transform-style: preserve-3d; align-items: center; }
+/* Card membro: avanza verso lo spettatore e ruota quando · al centro */
+.flip { width: 300px; height: 420px; flex: none; transform-style: preserve-3d; will-change: transform; }
+.flip-in { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; will-change: transform; }
+.face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: var(--panel); }
+.face-front { box-shadow: 0 18px 60px rgba(0,0,0,.5); }
+.face.flipped { border-color: rgba(236,72,153,.55); }
+.avatar { position: absolute; inset: 0; display: grid; place-items: center; font-size: 5rem; font-weight: 700; color: rgba(255,255,255,.9); background: linear-gradient(135deg, #1b1b1f, #0c0c0e); }
+.avatar::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,72,153,.45), rgba(192,132,252,.25) 55%, transparent); }
+.avatar-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.88), transparent 55%); }
+.node-tag { position: absolute; top: 14px; left: 16px; font-size: .68rem; letter-spacing: .2em; color: var(--mut); }
+.front-name { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px 18px; }
+.front-name b { display: block; font-size: 1.8rem; font-family: "VT323", "Courier New", monospace; font-weight: 400; text-transform: uppercase; line-height: 1; }
+.front-name span { display: block; color: var(--mut); font-size: .8rem; margin-top: 2px; }
+.face-back { background: #0c0c0e; padding: 20px; display: flex; flex-direction: column; border-color: rgba(236,72,153,.5); }
+.cred { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--pur); }
+.back-role { font-size: 1.6rem; font-family: "VT323", "Courier New", monospace; font-weight: 400; text-transform: uppercase; margin: .6rem 0; color: #fff; }
+.back-fact { color: var(--mut); font-size: .9rem; line-height: 1.6; margin: 0; }
+.back-id { margin-top: auto; padding-top: 1rem; font-size: .75rem; letter-spacing: .12em; color: var(--mag); }
+/* Placeholder: riempiono la linea, ignorano lo scroll */
+.ghost-card { width: 300px; height: 420px; flex: none; border-radius: 18px; border: 1px dashed rgba(255,255,255,.14); display: grid; place-items: center; color: rgba(255,255,255,.22); font-size: .7rem; letter-spacing: .22em; }
+.rail-hint { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); color: var(--mut); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+/* Mobile: card più strette */
+@media (max-width: 640px) {
+  .flip, .ghost-card { width: 250px; }
+  .flip { height: 400px; }
+  .ghost-card { height: 400px; }
+}
+/* Schermi bassi: card compatte per non tagliare l'onda */
+@media (max-height: 720px) {
+  .flip, .ghost-card { height: 320px; }
+  .front-name b { font-size: 1.1rem; }
+  .avatar { font-size: 3.6rem; }
+}
+/* Motion ridotto: griglia statica impaginata, flip al click */
+@media (prefers-reduced-motion: reduce) {
+  .rail-pin { height: auto; }
+  .rail-stage { position: relative; height: auto; padding: 1rem 0 3rem; display: block; overflow: visible; }
+  .rail-track { flex-wrap: wrap; justify-content: center; padding: 0 clamp(1rem, 5vw, 4rem); transform: none !important; }
+  .rail-hint { display: none; }
+  html { scroll-behavior: auto; }
+}
+footer { padding: 3rem 0 4rem; }
+footer .kicker { margin-bottom: 1rem; }
+footer .mails a { color: var(--mag); }
+footer nav a { display: inline-block; margin-right: 1rem; color: var(--mut); font-size: .85rem; text-decoration: none; }
+footer nav a:hover { color: #fff; }
+
+/* Menù condiviso Proposta D */
+.menu{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.68);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);}
+.menu-in{max-width:1280px;margin:0 auto;padding:.7rem clamp(1rem,5vw,2rem);display:flex;align-items:center;gap:.7rem;}
+.m-brand{display:flex;align-items:center;gap:.6rem;padding:.65rem 1.2rem .65rem .95rem;text-decoration:none;color:inherit;background:rgba(24,24,27,.9);border:1px solid rgba(255,255,255,.08);border-radius:999px;flex:none;}
+.m-brand b{color:#fff;font-size:.82rem;font-weight:400;letter-spacing:-0.01em;white-space:nowrap;}
+.m-brand small{color:#9a9a9a;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.m-nav{display:flex;align-items:center;gap:.15rem;padding:.4rem .55rem;background:rgba(24,24,27,.9);border:1px solid rgba(255,255,255,.08);border-radius:999px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;min-width:0;}
+.m-nav::-webkit-scrollbar{display:none;}
+.m-nav a{color:#9a9a9a;text-decoration:none;font-size:.76rem;font-weight:400;padding:.55rem .8rem;border-radius:999px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;flex:none;}
+.m-nav a:hover{color:#fff;}
+.m-nav a.on{color:#fff;background:rgba(255,255,255,.1);}
+.m-year{color:#ffb829;font-size:.7rem;letter-spacing:.1em;padding:.5rem .75rem;border:1px solid rgba(255,184,41,.4);border-radius:999px;white-space:nowrap;flex:none;}
+.m-cta{background:#fff;color:#000;font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:.8rem 1.3rem;text-decoration:none;flex:none;transition:transform .15s ease;}
+.m-cta:hover{transform:scale(1.04);}
+@media (max-width: 720px){
+  .menu-in{flex-wrap:wrap;}
+  .m-brand small{display:none;}
+  .m-nav{order:3;flex-basis:100%;}
+  .m-cta{margin-left:auto;font-size:.7rem;padding:.7rem 1.1rem;}
+}
+
+/* Striscia sponsor nel footer */
+.sp-strip{border-bottom:1px solid rgba(255,255,255,.08);padding:0 0 1.5rem;margin-bottom:1.5rem;}
+.sp-label{display:inline-block;color:#9a9a9a;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.9rem;text-decoration:none;}
+a.sp-label:hover{color:#fff;}
+.sp-view{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.sp-track{display:flex;width:max-content;animation:spmove 24s linear infinite;}
+.sp-strip:hover .sp-track{animation-play-state:paused;}
+@keyframes spmove{to{transform:translateX(-50%);}}
+.sp-group{display:flex;gap:.9rem;padding-right:.9rem;}
+.sp-logo{flex:none;border:1px dashed rgba(255,255,255,.22);border-radius:12px;padding:.85rem 1.6rem;color:rgba(255,255,255,.55);font-size:.78rem;letter-spacing:.12em;text-decoration:none;white-space:nowrap;}
+.sp-logo:hover{color:#fff;border-color:#fff;}
+.sp-logo.hot{border-style:solid;border-color:rgba(255,184,41,.5);color:#ffb829;}
+@media (prefers-reduced-motion: reduce){.sp-track{animation:none;flex-wrap:wrap;width:auto;}}
+/* Sfondo gradienti scroll-driven: fisso, tenue, non interferisce con lettura */
+.scroll-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:#050506;overflow:hidden;--p:0;}
+.scroll-bg::before{content:"";position:absolute;inset:-20%;background:radial-gradient(ellipse 55% 42% at 30% 18%,rgba(128,82,255,.20),transparent 70%),radial-gradient(ellipse 45% 36% at 70% 52%,rgba(255,184,41,.10),transparent 70%),radial-gradient(ellipse 60% 45% at 40% 88%,rgba(21,132,110,.14),transparent 70%),radial-gradient(ellipse 40% 32% at 60% 78%,rgba(217,47,122,.08),transparent 70%);transform:translate3d(0,calc(var(--p)*-60px),0);will-change:transform;}
+.scroll-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.25) 35%,rgba(0,0,0,.35) 65%,rgba(0,0,0,.7));}
+header.menu,main,footer{position:relative;z-index:1;}
+@media(prefers-reduced-motion:reduce){.scroll-bg::before{background:radial-gradient(ellipse 55% 42% at 40% 20%,rgba(128,82,255,.16),transparent 70%),radial-gradient(ellipse 50% 40% at 70% 80%,rgba(21,132,110,.10),transparent 70%);}}
+</style>
+</head>
+<body>
+<div class="scroll-bg" aria-hidden="true"></div>
+<!-- Menù sticky con navigazione scorrevole -->
+<header class="menu"><div class="menu-in"><a class="m-brand" href="../" aria-label="STEAM Robotics home"><span><b>steam robotics</b><br /><small>ftc team 34690 · parma</small></span></a><nav class="m-nav" aria-label="navigazione"><a href="../">Stagione</a><a href="./" class="on">Team</a><a href="../robot/">Robot</a><a href="../../sponsor/">Sponsor</a><a href="../outreach/">Stories</a><a href="../../news/">News</a><a href="../../contatti/">Contatti</a><span class="m-year" title="Selettore stagione (prossimamente)">2026-27</span></nav><a class="m-cta" href="../../sponsor/">diventa partner</a></div></header>
+<main>
+<!-- Hero: titolo + widget live -->
+<section class="team-hero wrap">
+<div>
+<p class="kicker">2026-27 · team · F5</p>
+<h1 class="big">Dodici nodi,<br /><span class="scan">una rete.</span></h1>
+<p class="lead">Scorri: la linea scorre orizzontale, la card al centro avanza e si gira da sola mostrando ruolo e fun fact. Continua a scorrere e torna in fila.</p>
+</div>
+<div class="livebox" aria-label="stato team">
+<div class="live-row"><span class="dot" aria-hidden="true"></span><span>LIVE</span></div>
+<div class="live-num mono" id="liveNum">00</div>
+<div class="live-cap mono">NODI ATTIVI / TEAM 34690 ONLINE</div>
+</div>
+</section>
+<!-- Linea pinnata: track orizzontale guidato dallo scroll -->
+<div class="rail-pin" id="pin">
+<section class="rail-stage" id="stage" aria-label="linea membri del team">
+<div class="rail-track" id="track"></div>
+<div class="rail-hint">scorri · la card al centro si gira da sola</div>
+</section>
+</div>
+</main>
+<footer class="wrap"><div class="sp-strip"><a class="sp-label" href="../../sponsor/">sponsor · il tuo logo qui ↗</a><div class="sp-view"><div class="sp-track"><div class="sp-group"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div></div></div></div><p class="kicker">contatti</p><p class="mails"><a href="mailto:info@steamrobotics.it">info@steamrobotics.it</a></p><nav><a href="https://github.com/steamrobotics-pr" target="_blank" rel="noopener">github</a><a href="../">stagione</a><a href="../robot/">robot</a><a href="../../sponsor/">sponsor</a><a href="../../contatti/">contatti</a></nav><p><small>steam robotics · ftc team 34690 · parma · prima stagione 2026/27.</small></p></footer>
+<script>
+(function () {
+  "use strict";
+  /* Dati reali dei membri; fun fact illustrativi da sostituire con citazioni vere */
+  var nodes = [
+    { n: "Lorenzo Castellan", r: "Lead Engineering Mentor", f: "Rilegge i portfolio come fossero finali di coppa, penna rossa alla mano.", id: "TM-34690-01" },
+    { n: "Giovanni Tedeschi", r: "CAD & Technology Mentor", f: "Riconosce un assieme sbagliato dal suono del mouse.", id: "TM-34690-02" },
+    { n: "Luca Sacchini", r: "Software Mentor", f: "Formatta il codice anche nei sogni, dicono i compagni.", id: "TM-34690-03" },
+    { n: "Patrick Silingardi", r: "Business Mentor", f: "Trasforma un foglio di calcolo in un discorso da palco.", id: "TM-34690-04" },
+    { n: "Alessandro Cabassa", r: "Java & Electronics", f: "Salda meglio di quanto parcheggi la bici.", id: "TM-34690-05" },
+    { n: "Valentino Deranieri", r: "Robotics Designer", f: "Sogna ingranaggi che si incastrano al primo colpo.", id: "TM-34690-06" },
+    { n: "Sofia Bucaram", r: "Designer", f: "Vede palette di colori dove gli altri vedono muri grigi.", id: "TM-34690-07" },
+    { n: "Alice Boccoli", r: "Designer", f: "Sistema i layout storti anche sui cartelloni in corridoio.", id: "TM-34690-08" },
+    { n: "Filippo Impellizzeri", r: "Robotics & CAD", f: "Passa dal taccuino al CAD senza perdere un millimetro.", id: "TM-34690-09" },
+    { n: "Alessia Manferdini", r: "Designer", f: "Il portfolio prima di tutto, il podio poi.", id: "TM-34690-10" },
+    { n: "Sofia Giuberti", r: "Designer", f: "Racconta l'ingegneria come fosse una storia d'avventura.", id: "TM-34690-11" },
+    { n: "Filippo Cottini", r: "CAD & IT", f: "I suoi modelli sopravvivono al campo e al lunedì.", id: "TM-34690-12" }
+  ];
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var pin = document.getElementById("pin");
+  var stage = document.getElementById("stage");
+  var track = document.getElementById("track");
+  var GAP = 24;
+  /* Costruzione: un ghost prima di ogni membro per tenere piena la linea */
+  var cards = [];
+  var ghosts = [];
+  var order = 0;
+  var tints = ["rgba(236,72,153,.16)", "rgba(192,132,252,.14)", "rgba(96,165,250,.14)"];
+  function initialsOf(name) {
+    return name.split(" ").map(function (w) { return w[0]; }).join("").slice(0, 2).toUpperCase();
+  }
+  nodes.forEach(function (m, i) {
+    var g = document.createElement("div");
+    g.className = "ghost-card mono";
+    g.setAttribute("aria-hidden", "true");
+    g.textContent = "–· STANDBY";
+    g.dataset.oi = order++;
+    g.style.background = "linear-gradient(135deg, " + tints[i % 3] + ", transparent)";
+    ghosts.push(g);
+    track.appendChild(g);
+    var el = document.createElement("div");
+    el.className = "flip";
+    var num = ("0" + (i + 1)).slice(-2);
+    el.innerHTML =
+      '<div class="flip-in">'
+      + '<div class="face face-front"><div class="avatar" aria-hidden="true">' + initialsOf(m.n) + '</div><div class="avatar-shade"></div>'
+      + '<span class="node-tag mono">NODE ' + num + '</span>'
+      + '<div class="front-name"><b>' + m.n + '</b><span>' + m.r + '</span></div></div>'
+      + '<div class="face face-back" style="transform: rotateY(180deg)"><span class="cred">Credentials</span><p class="back-role">' + m.r + '</p>'
+      + '<p class="back-fact">' + m.f + '</p><span class="back-id mono">ID: ' + m.id + '</span></div>'
+      + "</div>";
+    track.appendChild(el);
+    cards.push({ root: el, inner: el.firstChild, flip: 0, ghost: false, oi: order++ });
+  });
+  /* Ghost finale per chiudere la linea */
+  var gEnd = document.createElement("div");
+  gEnd.className = "ghost-card mono";
+  gEnd.setAttribute("aria-hidden", "true");
+  gEnd.textContent = "–· STANDBY";
+  gEnd.dataset.oi = order++;
+  gEnd.style.background = "linear-gradient(135deg, rgba(192,132,252,.14), transparent)";
+  ghosts.push(gEnd);
+  track.appendChild(gEnd);
+  /* Contatore live 00 -> 12 */
+  var liveNum = document.getElementById("liveNum");
+  var counted = false;
+  function countUp() {
+    if (counted) return;
+    counted = true;
+    if (reduced) { liveNum.textContent = nodes.length; return; }
+    var start = null;
+    function step(t) {
+      if (!start) start = t;
+      var v = Math.min(nodes.length, Math.floor(((t - start) / 900) * nodes.length));
+      liveNum.textContent = ("0" + v).slice(-2);
+      if (v < nodes.length) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (reduced) {
+    /* Motion ridotto: tutto visibile, flip al click */
+    countUp();
+    cards.forEach(function (c) {
+      c.root.style.cursor = "pointer";
+      c.root.addEventListener("click", function () {
+        var on = c.inner.style.transform.indexOf("180") !== -1;
+        c.inner.style.transform = on ? "" : "rotateY(180deg)";
+      });
+    });
+    return;
+  }
+  /* Mappa scroll -> avanzamento lungo la fase pinnata */
+  var target = 0, progress = 0, raf = 0;
+  function requestFrame() {
+    if (!raf && !document.hidden) raf = requestAnimationFrame(frame);
+  }
+  function updateTarget() {
+    var r = pin.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var span = Math.max(1, r.height - vh);
+    target = Math.max(0, Math.min(1, -r.top / span));
+    requestFrame();
+  }
+  window.addEventListener("scroll", updateTarget, { passive: true });
+  window.addEventListener("resize", updateTarget);
+  function cardW() { return track.querySelector(".flip").offsetWidth + GAP; }
+  function frame() {
+    raf = 0;
+    progress += (target - progress) * 0.1;
+    var maxShift = Math.max(0, track.scrollWidth - stage.clientWidth);
+    var shift = progress * maxShift;
+    track.style.transform = "translate3d(" + (-shift).toFixed(1) + "px,0,0)";
+    /* Onda 3D stile reference: fase guidata dallo scroll, tutte le tessere la cavalcano */
+    var phase = progress * Math.PI * 3;
+    var AMP = stage.clientHeight < 720 ? 36 : 70;
+    ghosts.forEach(function (g) {
+      var oi = parseInt(g.dataset.oi, 10) || 0;
+      var wy = Math.sin(phase + oi * 0.9) * AMP;
+      var wr = Math.cos(phase + oi * 0.9) * 12;
+      g.style.transform = "translateY(" + wy.toFixed(1) + "px) rotateY(" + wr.toFixed(1) + "deg)";
+    });
+    /* Per ogni membro: distanza dal centro viewport -> avanza (Z) e si gira */
+    var cx = stage.clientWidth / 2;
+    var range = cardW() * 1.4;
+    cards.forEach(function (c) {
+      var r = c.root.getBoundingClientRect();
+      var dist = Math.abs(r.left + r.width / 2 - cx);
+      var prox = Math.max(0, 1 - dist / range);
+      var wantFlip = prox > 0.55 ? 180 : 0;
+      c.wantFlip = wantFlip;
+      c.flip += (wantFlip - c.flip) * 0.15;
+      var wy = Math.sin(phase + c.oi * 0.9) * AMP;
+      var wr = Math.cos(phase + c.oi * 0.9) * 12;
+      c.root.style.transform = "translateY(" + wy.toFixed(1) + "px) translateZ(" + (prox * 200).toFixed(1) + "px) rotateY(" + wr.toFixed(1) + "deg)";
+      c.inner.style.transform = "rotateY(" + c.flip.toFixed(1) + "deg)";
+      var back = c.inner.querySelector(".face-back");
+      if (back) back.classList.toggle("flipped", c.flip > 90);
+    });
+    var activeMoving = Math.abs(target - progress) > 0.0001;
+    for (var k = 0; k < cards.length; k++) {
+      if (Math.abs((cards[k].wantFlip || 0) - cards[k].flip) > 0.05) { activeMoving = true; break; }
+    }
+    if (!document.hidden && activeMoving) raf = requestAnimationFrame(frame);
+  }
+  updateTarget();
+  countUp();
+  raf = requestAnimationFrame(frame);
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) { if (raf) cancelAnimationFrame(raf); raf = 0; }
+    else if (!raf) raf = requestAnimationFrame(frame);
+  });
+})();
+</script>
+<script>(function(){var bg=document.querySelector('.scroll-bg');if(!bg||bg.dataset.done)return;bg.dataset.done='1';var run=false,red=matchMedia('(prefers-reduced-motion: reduce)').matches;if(red){bg.style.setProperty('--p','0.3');return;}function upd(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var raw=max>0?(window.scrollY||window.pageYOffset)/max:0;bg.style.setProperty('--p',raw.toFixed(4));run=false;}function trigger(){if(!run){run=true;requestAnimationFrame(upd);}}addEventListener('scroll',trigger,{passive:true});trigger();})();</script>
+</body>
+</html>
+
