@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STEAM Robotics · FTC Team 34690 · Parma</title>
+<meta name="description" content="STEAM Robotics · FIRST Tech Challenge Team 34690 del Liceo STEAM International Parma: prima stagione 2026/27, CAD, Java, autonomia, outreach e partnership." />
+<link rel="canonical" href="https://steamrobotics.it/2026-27/" />
+<meta property="og:title" content="STEAM Robotics · FTC Team 34690" />
+<meta property="og:description" content="Team FTC 34690 da Parma: engineering, teamwork, prototipi e partnership. Prima stagione 2026/27." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://steamrobotics.it/2026-27/" />
+<meta property="og:locale" content="it_IT" />
+<meta property="og:image" content="https://steamrobotics.it/assets/og-placeholder.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+<style>
+@font-face { font-family: "Inter"; src: url("../Font/inter/static/inter-latin-200-normal.woff2") format("woff2"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../Font/inter/static/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../Font/inter/static/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "FingerPaint"; src: url("../Font/finger-paint/finger-paint-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "VT323"; src: url("../Font/vt323/vt323-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+h1, h2, h3, .hero-title, h2.big, .member h3 { font-family: "VT323", "Courier New", monospace; font-weight: 400; letter-spacing: 0.02em; }
+:root {
+  --void: #000000; --bone: #ffffff; --ash: #9a9a9a; --mist: #bdbdbd;
+  --iris: #8052ff; --saffron: #ffb829; --verdant: #15846e;
+  --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "FingerPaint", Inter, system-ui, sans-serif;
+  --mono: "VT323", ui-monospace, monospace;
+  --ease: cubic-bezier(.32,.72,0,1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--void); color: var(--bone); font-family: var(--sans); font-weight: 200; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+.hero-title { letter-spacing: -0.04em; line-height: 0.95; }
+.hero { position: relative; width: 100%; height: 100vh; height: 100dvh; overflow: hidden; background: var(--void); }
+.hero-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .42; z-index: 0; filter: grayscale(1); }
+.hero-veil { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.38) 45%, rgba(0,0,0,.66)); }
+.hero-const { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; pointer-events: none; }
+.hero-ui { position: absolute; inset: 0; z-index: 8; }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Team photo stilizzata con frame e badge */
+.team-photo { margin: 2rem 0 0; max-width: 460px; position: relative; }
+.team-photo-frame { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid rgba(128,82,255,.4); box-shadow: 0 0 0 4px rgba(128,82,255,.08), 0 32px 80px rgba(0,0,0,.5); }
+.team-photo-frame::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(128,82,255,.08) 0%, transparent 50%, rgba(255,184,41,.04) 100%); z-index: 1; pointer-events: none; }
+.team-photo-frame::after  { content: 'STEAM ROBOTICS · FTC 34690'; position: absolute; bottom: 0; left: 0; right: 0; padding: .6rem 1rem; background: linear-gradient(to top, rgba(0,0,0,.9), transparent); font-size: .65rem; letter-spacing: .18em; color: rgba(255,255,255,.5); z-index: 2; }
+.team-photo img { width: 100%; display: block; filter: saturate(0.75) contrast(1.05); transition: filter .4s ease; }
+.team-photo:hover img { filter: saturate(1) contrast(1); }
+.team-photo-badge { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,.7); border: 1px solid rgba(128,82,255,.5); border-radius: 999px; padding: .3rem .8rem; font-size: .62rem; letter-spacing: .16em; color: var(--iris); z-index: 3; backdrop-filter: blur(8px); }
+.team-photo figcaption { color: var(--ash); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; margin-top: .7rem; padding-left: .25rem; }
+.cta-pill { background: var(--iris); color: #fff; font-size: .85rem; font-weight: 600; letter-spacing: .025em; text-transform: uppercase; border-radius: 999px; padding: .9rem 1.5rem; text-decoration: none; transition: transform .18s var(--ease), background .18s ease; }
+.cta-pill:hover { transform: translateY(-2px); }
+.cta-pill:active { transform: scale(.96); }
+#heroTitle { opacity: 0; }
+#heroTitle.anim-in { animation: heroFadeIn .7s ease forwards; }
+@keyframes heroFadeIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+#heroTitle .word-team   { display: inline; color: #fff; }
+#heroTitle .word-before { display: inline; color: #fff; }
+#heroTitle .word-robot  { display: inline; color: #fff; }
+.hero-title-block { position: absolute; left: 0; right: 0; top: 44%; transform: translateY(-50%); z-index: 5; padding: 0 clamp(0.75rem, 3vw, 2.5rem); pointer-events: none; text-align: left; }
+.hero-main-title { margin: 0; font-family: var(--mono); font-weight: 400; font-size: clamp(3.2rem, 13.5vw, 13.5rem); line-height: 0.9; letter-spacing: -0.03em; color: #fff; text-shadow: 0 0 120px rgba(128,82,255,.6); text-transform: lowercase; white-space: nowrap; }
+.hero-desc { position: absolute; left: 1.5rem; bottom: 7rem; max-width: 280px; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.75); margin: 0; font-weight: 200; }
+@media (min-width: 768px) { .hero-desc { left: 2.5rem; } }
+
+/* ── Formato paragrafo (seguendo FORMATO.png) ── */
+/* Ogni sezione ha: titolo grande · citazione · due card affiancate */
+.sec-layout { display: grid; row-gap: 0; }
+.sec-heading { margin: 0 0 .4rem; }
+.sec-quote { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 400; font-family: "VT323", "Courier New", monospace; color: var(--bone); line-height: 1.25; margin: 0 0 1.8rem; max-width: 44ch; }
+.cards-row { display: grid; gap: 1.25rem; }
+@media (min-width: 640px) { .cards-row { grid-template-columns: 1fr 1.65fr; } }
+.info-card { border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: 1.5rem 1.75rem; background: rgba(255,255,255,.03); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: border-color .25s ease, background .25s ease; }
+.info-card:hover { border-color: rgba(128,82,255,.35); background: rgba(128,82,255,.05); }
+.info-card.card-main { border-color: rgba(255,255,255,.12); }
+.info-card .card-label { font-size: 1.2rem; font-family: "VT323", "Courier New", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--saffron); margin: 0 0 .75rem; }
+#jStepHeader { font-size: 1.8rem !important; color: #fff !important; margin-bottom: 0.5rem; letter-spacing: 0.03em; }
+.info-card .card-value { font-size: 2.25rem; font-weight: 400; letter-spacing: -0.04em; font-family: var(--mono); color: var(--bone); margin: 0 0 .25rem; line-height: 1; }
+.info-card .card-body { color: var(--mist); font-size: .92rem; line-height: 1.6; margin: 0; }
+.info-card .card-rows { display: flex; flex-direction: column; gap: 0; }
+.info-card .card-row { display: flex; justify-content: space-between; align-items: baseline; padding: .65rem 0; font-size: .88rem; }
+.info-card .card-row + .card-row { border-top: 1px solid rgba(255,255,255,.08); }
+.info-card .card-row-lbl { color: var(--ash); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+.info-card .card-row-val { color: var(--bone); }
+.stat { position: absolute; }
+.stat .row { display: flex; align-items: center; gap: .75rem; justify-content: flex-end; }
+.stat .num { font-size: 2.25rem; font-weight: 400; letter-spacing: -0.04em; }
+@media (min-width: 768px) { .stat .num { font-size: 3rem; } }
+.stat .div { display: none; height: 1px; width: 6rem; background: rgba(255,255,255,.4); }
+@media (min-width: 768px) { .stat .div { display: block; } }
+.stat small { display: block; font-size: .75rem; color: rgba(255,255,255,.7); margin-top: .25rem; text-align: right; }
+.stat-tl { right: 1.5rem; top: 14%; }
+@media (min-width: 768px) { .stat-tl { right: 6rem; } }
+.stat-tl .div { transform: rotate(20deg); }
+.stat-bl { left: 1.5rem; top: 14%; }
+@media (min-width: 768px) { .stat-bl { left: 5rem; top: 14%; } }
+.stat-bl .row { justify-content: flex-start; }
+.stat-bl small { text-align: left; }
+.stat-bl .div { transform: rotate(-20deg); }
+.stat-br { right: 1.5rem; bottom: 4rem; }
+@media (min-width: 768px) { .stat-br { right: 5rem; bottom: 5rem; } }
+.stat-br .div { transform: rotate(-20deg); }
+.hero-fade { pointer-events: none; position: absolute; bottom: 0; left: 0; right: 0; height: 12rem; background: linear-gradient(to bottom, transparent, #000); }
+.eyebrow-line { position: absolute; left: 50%; bottom: 1.25rem; transform: translateX(-50%); width: 22px; height: 38px; border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; }
+.eyebrow-line span { position: absolute; left: 50%; top: 7px; width: 4px; height: 8px; border-radius: 999px; background: var(--iris); transform: translateX(-50%); animation: cue 1.6s infinite; }
+@keyframes cue { to { transform: translate(-50%, 14px); opacity: 0; } }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 4rem); }
+section.block { padding: clamp(3.75rem, 8vw, 7.5rem) 0; }
+.kicker { color: var(--saffron); font-size: .85rem; font-weight: 600; letter-spacing: .025em; text-transform: uppercase; margin: 0 0 1rem; }
+h1.big, h2.big, .sec-heading { font-weight: 400; letter-spacing: -0.04em; line-height: 1.05; font-size: clamp(3.5rem, 9.5vw, 6.2rem); margin: 0 0 1rem; max-width: 22ch; font-family: "VT323", "Courier New", monospace; }
+.lead { color: var(--mist); font-size: 18px; line-height: 1.5; max-width: 60ch; margin: 0; }
+.two { display: grid; gap: 2rem; }
+@media (min-width: 900px) { .two { grid-template-columns: 1fr 1fr; align-items: start; } }
+.ghost-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .9rem 0; text-decoration: none; }
+.ghost-row + .ghost-row { border-top: 1px solid rgba(255,255,255,.12); }
+.ghost-row .lbl { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ash); }
+.ghost-row .val { font-size: 1rem; color: var(--bone); text-align: right; }
+.ghost-row p { color: var(--mist); font-size: .9rem; margin: .2rem 0 0; }
+.btn-row { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.75rem; }
+.ghost-link { color: var(--ash); font-size: .85rem; padding: .9rem .2rem; text-decoration: none; transition: color .2s ease; }
+.ghost-link:hover { color: #fff; }
+.role { color: var(--iris); font-size: .7rem; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; margin: 0; }
+.member h3 { font-size: 1.7rem; font-weight: 400; margin: .2rem 0; letter-spacing: -0.02em; }
+.member q { color: var(--mist); font-size: .95rem; }
+.dots { display: flex; gap: .5rem; margin-top: 1.25rem; }
+.dots button { width: 8px; height: 8px; border-radius: 999px; border: 0; padding: 0; background: rgba(255,255,255,.25); cursor: pointer; }
+.dots button.active { background: var(--iris); box-shadow: 0 0 14px rgba(128,82,255,.8); }
+footer { padding: 3rem 0 4rem; }
+footer .mails a { color: var(--saffron); }
+footer nav a { display: inline-block; margin-right: 1rem; color: var(--ash); font-size: .85rem; text-decoration: none; }
+footer nav a:hover { color: #fff; }
+.pull-word { display: inline-block; opacity: 0; transform: translateY(20px); }
+.pull-word:not(:last-child) { margin-right: .3em; }
+.words-visible .pull-word { animation: wordPullUp .55s ease forwards; }
+@keyframes wordPullUp { to { opacity: 1; transform: translateY(0); } }
+.fade-up-reveal { opacity: 0; transform: translateY(14px); filter: blur(8px); }
+.fade-up-reveal.is-visible { animation: fadeUp .7s ease forwards; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); filter: blur(0); } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pull-word, .fade-up-reveal, .words-visible .pull-word, .fade-up-reveal.is-visible { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+  .eyebrow-line span { animation: none !important; }
+  .hero-const { display: none !important; }
+}
+
+/* Menù condiviso Proposta D */
+.menu{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.68);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);}
+.menu-in{max-width:1280px;margin:0 auto;padding:.7rem clamp(1rem,5vw,2rem);display:flex;align-items:center;gap:.7rem;}
+.m-brand{display:flex;align-items:center;gap:.6rem;padding:.65rem 1.2rem .65rem .95rem;text-decoration:none;color:inherit;background:rgba(24,24,27,.9);border:1px solid rgba(255,255,255,.08);border-radius:999px;flex:none;}
+.m-brand b{color:#fff;font-size:.82rem;font-weight:400;letter-spacing:-0.01em;white-space:nowrap;}
+.m-brand small{color:#9a9a9a;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.m-nav{display:flex;align-items:center;gap:.15rem;padding:.4rem .55rem;background:rgba(24,24,27,.9);border:1px solid rgba(255,255,255,.08);border-radius:999px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;min-width:0;}
+.m-nav::-webkit-scrollbar{display:none;}
+.m-nav a{color:#9a9a9a;text-decoration:none;font-size:.76rem;font-weight:400;padding:.55rem .8rem;border-radius:999px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;flex:none;}
+.m-nav a:hover{color:#fff;}
+.m-nav a.on{color:#fff;background:rgba(255,255,255,.1);}
+.m-year{color:#ffb829;font-size:.7rem;letter-spacing:.1em;padding:.5rem .75rem;border:1px solid rgba(255,184,41,.4);border-radius:999px;white-space:nowrap;flex:none;}
+.m-cta{background:#fff;color:#000;font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:.8rem 1.3rem;text-decoration:none;flex:none;transition:transform .15s ease;}
+.m-cta:hover{transform:scale(1.04);}
+@media (max-width: 720px){
+  .menu-in{flex-wrap:wrap;}
+  .m-brand small{display:none;}
+  .m-nav{order:3;flex-basis:100%;}
+  .m-cta{margin-left:auto;font-size:.7rem;padding:.7rem 1.1rem;}
+}
+
+/* Striscia sponsor nel footer */
+.sp-strip{border-bottom:1px solid rgba(255,255,255,.08);padding:0 0 1.5rem;margin-bottom:1.5rem;}
+.sp-label{display:inline-block;color:#9a9a9a;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.9rem;text-decoration:none;}
+a.sp-label:hover{color:#fff;}
+.sp-view{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.sp-track{display:flex;width:max-content;animation:spmove 24s linear infinite;}
+.sp-strip:hover .sp-track{animation-play-state:paused;}
+@keyframes spmove{to{transform:translateX(-50%);}}
+.sp-group{display:flex;gap:.9rem;padding-right:.9rem;}
+.sp-logo{flex:none;border:1px dashed rgba(255,255,255,.22);border-radius:12px;padding:.85rem 1.6rem;color:rgba(255,255,255,.55);font-size:.78rem;letter-spacing:.12em;text-decoration:none;white-space:nowrap;}
+.sp-logo:hover{color:#fff;border-color:#fff;}
+.sp-logo.hot{border-style:solid;border-color:rgba(255,184,41,.5);color:#ffb829;}
+@media (prefers-reduced-motion: reduce){.sp-track{animation:none;flex-wrap:wrap;width:auto;}}
+/* Sfondo gradienti scroll-driven: fisso, tenue, non interferisce con lettura */
+.scroll-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:#050506;overflow:hidden;--p:0;}
+.scroll-bg::before{content:"";position:absolute;inset:-20%;background:radial-gradient(ellipse 55% 42% at 30% 18%,rgba(128,82,255,.20),transparent 70%),radial-gradient(ellipse 45% 36% at 70% 52%,rgba(255,184,41,.10),transparent 70%),radial-gradient(ellipse 60% 45% at 40% 88%,rgba(21,132,110,.14),transparent 70%),radial-gradient(ellipse 40% 32% at 60% 78%,rgba(217,47,122,.08),transparent 70%);transform:translate3d(0,calc(var(--p)*-60px),0);will-change:transform;}
+.scroll-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.25) 35%,rgba(0,0,0,.35) 65%,rgba(0,0,0,.7));}
+header.menu,main,footer{position:relative;z-index:1;}
+@media(prefers-reduced-motion:reduce){.scroll-bg::before{background:radial-gradient(ellipse 55% 42% at 40% 20%,rgba(128,82,255,.16),transparent 70%),radial-gradient(ellipse 50% 40% at 70% 80%,rgba(21,132,110,.10),transparent 70%);}}
+</style>
+</head>
+<body>
+<div class="scroll-bg" aria-hidden="true"></div>
+<header class="menu"><div class="menu-in"><a class="m-brand" href="./" aria-label="STEAM Robotics home"><span><b>steam robotics</b><br /><small>ftc team 34690 · parma</small></span></a><nav class="m-nav" aria-label="navigazione"><a href="./" class="on">Stagione</a><a href="team/">Team</a><a href="robot/">Robot</a><a href="../sponsor/">Sponsor</a><a href="outreach/">Stories</a><a href="../news/">News</a><a href="../contatti/">Contatti</a><span class="m-year" title="Selettore stagione (prossimamente)">2026-27</span></nav><a class="m-cta" href="../sponsor/">diventa partner</a></div></header>
+<header class="hero">
+<video class="hero-bg-video" autoplay loop muted playsinline src="../assets/school-structure.mp4"></video>
+<div class="hero-veil" aria-hidden="true"></div>
+<canvas class="hero-const" id="const" aria-hidden="true"></canvas>
+<div class="hero-ui">
+
+<div id="top" class="hero-title-block">
+<h1 class="hero-main-title" id="heroTitle">
+  <span class="word-team">team</span> <span class="word-before">before</span> <span class="word-robot">robot</span>
+</h1>
+</div>
+<p class="hero-desc fade-up-reveal" data-delay="0.5">engineering a team before engineering the robot · studenti, mentor, cad, java, prototipi e partnership.</p>
+<div class="stat stat-tl"><div class="row"><span class="div"></span><span class="num">12</span></div><small>membri nel team</small></div>
+<div class="stat stat-bl"><div class="row"><span class="num">34690</span><span class="div"></span></div><small>ftc team · parma, italy</small></div>
+<div class="stat stat-br"><div class="row"><span class="div"></span><span class="num">2026/27</span></div><small>prima stagione</small></div>
+<div class="hero-fade"></div>
+<div class="eyebrow-line" aria-hidden="true"><span></span></div>
+</div>
+</header>
+<main class="wrap">
+
+<!-- ═══ § FTC ═══ -->
+<section class="block sec-layout" id="ftc">
+  <h2 class="big words-pull-up sec-heading">first tech challenge</h2>
+  <p class="sec-quote fade-up-reveal">non una gara di robot. una stagione di ingegneria.</p>
+  <div class="cards-row fade-up-reveal" data-delay="0.15">
+    <div class="info-card">
+      <p class="card-label">cosa facciamo</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">01 · analizzare</span><span class="card-row-val">strategia</span></div>
+        <div class="card-row"><span class="card-row-lbl">02 · prototipare</span><span class="card-row-val">iterare</span></div>
+        <div class="card-row"><span class="card-row-lbl">03 · programmare</span><span class="card-row-val">java / sdk</span></div>
+        <div class="card-row"><span class="card-row-lbl">04 · raccontare</span><span class="card-row-val">outreach</span></div>
+      </div>
+    </div>
+    <div class="info-card card-main">
+      <p class="card-label">first tech challenge · cos'è</p>
+      <p class="card-body">La FIRST Tech Challenge porta team di studenti a progettare, costruire e programmare robot per una sfida annuale: strategia, prototipi, codice, documentazione, outreach e competizione reale davanti a sponsor e giudici tecnici.</p>
+      <div class="btn-row" style="margin-top:1.25rem">
+        <a class="cta-pill" href="#engineering">scopri le aree</a>
+        <a class="ghost-link" href="#journey">il percorso ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § CHI SIAMO ═══ -->
+<section class="block sec-layout" id="about">
+  <h2 class="big words-pull-up sec-heading">chi siamo</h2>
+  <p class="sec-quote fade-up-reveal">un team scolastico, standard da progetto tecnico vero.</p>
+  <div class="cards-row fade-up-reveal" data-delay="0.15">
+    <div class="info-card">
+      <p class="card-label">dati rapidi</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">scuola</span><span class="card-row-val">parma</span></div>
+        <div class="card-row"><span class="card-row-lbl">membri</span><span class="card-row-val">12</span></div>
+        <div class="card-row"><span class="card-row-lbl">stagione</span><span class="card-row-val">2026/27</span></div>
+        <div class="card-row"><span class="card-row-lbl">modello</span><span class="card-row-val">student-driven</span></div>
+      </div>
+    </div>
+    <div class="info-card card-main">
+      <p class="card-label">la nostra storia</p>
+      <p class="card-body">STEAM Robotics nasce nel Liceo STEAM International di Parma, scuola superiore quadriennale a indirizzo STEAM. Prima stagione FTC 2026/27: studenti di seconda, terza e quarta con senior e docenti come mentor. Background in F1 in Schools, FIRST LEGO League e software extracurricolare.</p>
+      <div class="btn-row" style="margin-top:1.25rem">
+        <a class="cta-pill" href="../contatti/">contattaci</a>
+        <a class="ghost-link" href="outreach/">stories ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § AREE DI LAVORO ═══ -->
+<section class="block sec-layout" id="engineering">
+  <h2 class="big words-pull-up sec-heading">aree di lavoro</h2>
+  <p class="sec-quote fade-up-reveal">quattro reparti, un solo robot affidabile.</p>
+  <div class="cards-row fade-up-reveal" data-delay="0.15">
+    <div class="info-card">
+      <p class="card-label">team links</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">robot</span><a class="card-row-val" href="robot/" style="text-decoration:none;color:var(--iris)">scheda ↗</a></div>
+        <div class="card-row"><span class="card-row-lbl">team</span><a class="card-row-val" href="team/" style="text-decoration:none;color:var(--iris)">membri ↗</a></div>
+        <div class="card-row"><span class="card-row-lbl">outreach</span><a class="card-row-val" href="outreach/" style="text-decoration:none;color:var(--iris)">stories ↗</a></div>
+      </div>
+      <div style="margin-top:1.25rem"><a class="cta-pill" href="#robot">vedi il robot</a></div>
+    </div>
+    <div class="info-card card-main">
+      <p class="card-label">i quattro reparti</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">meccanica &amp; cad</span><span class="card-row-val" style="color:var(--saffron)">cad &amp; prototipi</span></div>
+        <div class="card-row"><span class="card-row-lbl">software &amp; controllo</span><span class="card-row-val" style="color:var(--iris)">java / sdk ftc</span></div>
+        <div class="card-row"><span class="card-row-lbl">elettronica</span><span class="card-row-val" style="color:var(--verdant)">motori &amp; servo</span></div>
+        <div class="card-row"><span class="card-row-lbl">outreach &amp; design</span><span class="card-row-val">portfolio &amp; sito</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § ROBOT ═══ -->
+<section class="block sec-layout" id="robot">
+  <h2 class="big words-pull-up sec-heading">season robot</h2>
+  <p class="sec-quote fade-up-reveal">per ora: una nuvola di punti. poi: cad reale.</p>
+  <div class="cards-row fade-up-reveal" data-delay="0.15">
+    <div class="info-card">
+      <p class="card-label">specifiche attuali</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">intake</span><span class="card-row-val">420 rpm</span></div>
+        <div class="card-row"><span class="card-row-lbl">lift</span><span class="card-row-val">1.2 m</span></div>
+        <div class="card-row"><span class="card-row-lbl">peso</span><span class="card-row-val">12 kg</span></div>
+      </div>
+      <div style="margin-top:1.25rem"><a class="cta-pill" href="#partners">sostieni il build</a></div>
+    </div>
+    <div class="info-card card-main">
+      <p class="card-label">sottosistemi</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">drivetrain</span><span class="card-row-val">mecanum 4wd</span></div>
+        <div class="card-row"><span class="card-row-lbl">scoring</span><span class="card-row-val">claw &amp; arm</span></div>
+        <div class="card-row"><span class="card-row-lbl">sensors</span><span class="card-row-val">apriltag · imu</span></div>
+        <div class="card-row"><span class="card-row-lbl">autonomia</span><span class="card-row-val">road runner</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § TEAM ═══ -->
+<section class="block sec-layout" id="team">
+  <h2 class="big words-pull-up sec-heading">team</h2>
+  <p class="sec-quote fade-up-reveal">persone diverse, stessa missione tecnica.</p>
+  <div class="cards-row fade-up-reveal" data-delay="0.15">
+    <div class="info-card">
+      <p class="card-label">composizione team</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">studenti</span><span class="card-row-val">8</span></div>
+        <div class="card-row"><span class="card-row-lbl">senior mentor</span><span class="card-row-val">2</span></div>
+        <div class="card-row"><span class="card-row-lbl">docenti mentor</span><span class="card-row-val">2</span></div>
+      </div>
+      <div class="btn-row" style="margin-top:1.25rem">
+        <a class="cta-pill" href="team/">scopri il team</a>
+      </div>
+    </div>
+    <div class="info-card card-main">
+      <figure class="team-photo" style="margin:0;max-width:100%">
+        <div class="team-photo-frame">
+          <span class="team-photo-badge">parma 2026</span>
+          <img src="../assets/the-team.jpeg" alt="Il team STEAM Robotics al completo" loading="lazy" />
+        </div>
+        <figcaption>il team · liceo steam international, parma</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § PARTNER ═══ -->
+<section class="block sec-layout" id="partners">
+  <h2 class="big words-pull-up sec-heading">sponsors &amp; partners</h2>
+  <p class="sec-quote fade-up-reveal">vuoi essere partner del team?</p>
+  <div class="cards-row fade-up-reveal" data-delay="0.15">
+    <div class="info-card">
+      <p class="card-label">piani disponibili</p>
+      <div class="card-rows">
+        <div class="card-row"><a href="../contatti/?piano=bronze#form" style="text-decoration:none;color:inherit;display:contents"><span class="card-row-lbl">bronze</span><span class="card-row-val" style="color:var(--mist)">supporter</span></a></div>
+        <div class="card-row"><a href="../contatti/?piano=silver#form" style="text-decoration:none;color:inherit;display:contents"><span class="card-row-lbl">silver</span><span class="card-row-val" style="color:var(--mist)">partner</span></a></div>
+        <div class="card-row"><a href="../contatti/?piano=gold#form" style="text-decoration:none;color:inherit;display:contents"><span class="card-row-lbl">gold</span><span class="card-row-val" style="color:var(--saffron)">title sponsor</span></a></div>
+      </div>
+      <div style="margin-top:1.25rem"><a class="cta-pill" href="../contatti/?piano=gold#form">diventa gold</a></div>
+    </div>
+    <div class="info-card card-main">
+      <p class="card-label">cosa offriamo</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">bronze · supporter</span><span class="card-row-val" style="font-size:.8rem">logo sito · social · update</span></div>
+        <div class="card-row"><span class="card-row-lbl">silver · partner</span><span class="card-row-val" style="font-size:.8rem">robot &amp; roll-up · post · lab</span></div>
+        <div class="card-row"><span class="card-row-lbl">gold · title</span><span class="card-row-val" style="font-size:.8rem">maglie &amp; pit · workshop · ftc</span></div>
+      </div>
+      <div class="btn-row" style="margin-top:1.25rem">
+        <a class="ghost-link" href="mailto:info@steamrobotics.it">contattaci direttamente ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § JOURNEY ═══ -->
+<section class="block sec-layout" id="journey">
+  <h2 class="big words-pull-up sec-heading">season journey</h2>
+  <p class="sec-quote fade-up-reveal">dalla strategia di kickoff al campo di gara.</p>
+  <div class="cards-row fade-up-reveal" data-delay="0.15">
+    <div class="info-card">
+      <p class="card-label">fase attuale</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl" id="jDate">2026 · kickoff</span><span class="card-row-val" id="jIndex">01 / 05</span></div>
+        <div class="card-row"><span class="card-row-lbl">stories</span><a class="card-row-val" href="outreach/" style="text-decoration:none;color:var(--iris)">apri ↗</a></div>
+        <div class="card-row"><span class="card-row-lbl">robot</span><a class="card-row-val" href="robot/" style="text-decoration:none;color:var(--iris)">apri ↗</a></div>
+      </div>
+      <div class="dots" id="jDots" aria-label="timeline" style="margin-top:1.25rem"></div>
+    </div>
+    <div class="info-card card-main">
+      <p class="card-label" id="jStepHeader">tappa 01 · kickoff &amp; strategy</p>
+      <p class="card-body" id="jStepBody">regolamento, priorità, scoring e rischio tecnico: capire cosa vale prima di progettare.</p>
+      <div class="card-rows" style="margin-top:1.25rem">
+        <div class="card-row"><span class="card-row-lbl">kickoff &amp; strategy</span><span class="card-row-val" style="color:var(--saffron)">2026</span></div>
+        <div class="card-row"><span class="card-row-lbl">workshop &amp; outreach</span><span class="card-row-val">2026</span></div>
+        <div class="card-row"><span class="card-row-lbl">prototipi rapidi</span><span class="card-row-val">2026</span></div>
+        <div class="card-row"><span class="card-row-lbl">cad &amp; build</span><span class="card-row-val">2026</span></div>
+        <div class="card-row"><span class="card-row-lbl">competition day</span><span class="card-row-val" style="color:var(--iris)">2027</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="wrap mails" id="contatti"><div class="sp-strip"><a class="sp-label" href="../sponsor/">sponsor · il tuo logo qui ↗</a><div class="sp-view"><div class="sp-track"><div class="sp-group"><a class="sp-logo hot" href="../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../sponsor/">diventa sponsor ↗</a></div></div></div></div>
+<p class="kicker">contatti</p>
+<p><a href="mailto:info@steamrobotics.it">info@steamrobotics.it</a></p>
+<nav><a href="https://github.com/steamrobotics-pr" target="_blank" rel="noopener">github</a><a href="https://www.instagram.com/steamrobotics_it/" target="_blank" rel="noopener">instagram</a><a href="http://liceosteamparma.it/" target="_blank" rel="noopener">liceo steam</a><a href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener">first ftc</a><a href="robot/">robot</a><a href="../sponsor/">sponsor</a><a href="outreach/">stories</a><a href="../contatti/">contatti</a></nav>
+<p><small>steam robotics · ftc team 34690 · liceo steam international, parma · prima stagione 2026/27.</small></p>
+</footer>
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var journey = [
+    { d: '2026 · kickoff', t: 'kickoff & strategy', b: 'regolamento, priorità, scoring e rischio tecnico: capire cosa vale prima di progettare.' },
+    { d: '2026 · workshop', t: 'workshop & outreach', b: 'incontri e attività con scuola e territorio: ogni evento racconta il progetto.' },
+    { d: '2026 · prototype', t: 'prototipi rapidi', b: 'test veloci, misure e fallimenti utili: scartare presto le idee fragili.' },
+    { d: '2026 · build', t: 'cad & build', b: 'dal concept al robot integrato: robustezza, manutenzione e montaggio reale.' },
+    { d: '2027 · event', t: 'competition day', b: 'match, judging, portfolio e alleanze: lezioni per la prossima iterazione.' }
+  ];
+  function splitWords(el, start) {
+    if (!el || el.dataset.split) return start;
+    el.dataset.split = '1';
+    var words = el.textContent.trim().split(/\s+/);
+    el.textContent = '';
+    words.forEach(function (w, k) {
+      var s = document.createElement('span');
+      s.className = 'pull-word';
+      s.style.animationDelay = ((start + k) * 0.1) + 's';
+      s.textContent = w;
+      el.appendChild(s);
+    });
+    return start + words.length;
+  }
+  var k = 0;
+  document.querySelectorAll('.words-pull-up').forEach(function (el) { k = splitWords(el, el.tagName === 'H1' ? k : 0); });
+  // Separate animation for structured hero title
+  var heroTitleEl = document.getElementById('heroTitle');
+  if (heroTitleEl) {
+    if (reduced) {
+      heroTitleEl.style.opacity = '1';
+    } else {
+      setTimeout(function() { heroTitleEl.classList.add('anim-in'); }, 100);
+    }
+  }
+  function showAll() {
+    document.querySelectorAll('.words-pull-up').forEach(function (el) { el.classList.add('words-visible'); });
+    document.querySelectorAll('.fade-up-reveal').forEach(function (el) { el.style.animationDelay = (el.dataset.delay || 0) + 's'; el.classList.add('is-visible'); });
+  }
+  if (reduced || !('IntersectionObserver' in window)) { showAll(); }
+  else {
+    var o1 = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('words-visible'); o1.unobserve(e.target); } }); }, { threshold: 0.2 });
+    var o2 = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { var t = e.target; t.style.animationDelay = (t.dataset.delay || 0) + 's'; t.classList.add('is-visible'); o2.unobserve(t); } }); }, { threshold: 0.15 });
+    document.querySelectorAll('.words-pull-up').forEach(function (el) { o1.observe(el); });
+    document.querySelectorAll('.fade-up-reveal').forEach(function (el) { o2.observe(el); });
+  }
+  var ji = 0, jDate = document.getElementById('jDate'), jStepHeader = document.getElementById('jStepHeader'), jStepBody = document.getElementById('jStepBody'), jIndex = document.getElementById('jIndex'), jDots = document.getElementById('jDots');
+  function renderJ(i) {
+    ji = (i + journey.length) % journey.length;
+    if (jDate) jDate.textContent = journey[ji].d;
+    if (jStepHeader) jStepHeader.textContent = 'tappa ' + ('0' + (ji + 1)).slice(-2) + ' · ' + journey[ji].t;
+    if (jStepBody) jStepBody.textContent = journey[ji].b;
+    if (jIndex) jIndex.textContent = ('0' + (ji + 1)).slice(-2) + ' / 05';
+    if (jDots) jDots.querySelectorAll('button').forEach(function (d, j) { d.classList.toggle('active', j === ji); });
+  }
+  journey.forEach(function (_, j) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('aria-label', journey[j].t);
+    if (j === 0) b.classList.add('active');
+    b.addEventListener('click', function () { renderJ(j); });
+    jDots.appendChild(b);
+  });
+  var cv = document.getElementById('const'), hero = document.querySelector('.hero');
+  if (cv && hero && !reduced) {
+    var ctx = cv.getContext('2d'), W = 0, H = 0, pts = [], tris = [], cols = [], amb = [];
+    var pal = [[128,82,255],[255,184,41],[21,132,110],[106,143,255],[217,47,122],[105,189,255],[135,255,209]];
+    var mx = { x: 0, y: 0 }, tx = { x: 0, y: 0 }, vis = true, raf = 0;
+    function build() {
+      var r = hero.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      W = Math.max(1, Math.floor(r.width)); H = Math.max(1, Math.floor(r.height));
+      cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var cell = Math.max(64, Math.min(96, W / 15)), rh = cell * 0.86;
+      var nc = Math.ceil(W / cell) + 3, nr = Math.ceil(H / rh) + 3;
+      pts = []; tris = [];
+      for (var y = 0; y < nr; y++) for (var x = 0; x < nc; x++) {
+        var ox = y % 2 ? cell * 0.5 : 0;
+        var px = x * cell - cell + ox + (Math.random() - 0.5) * cell * 0.16;
+        var py = y * rh - rh + (Math.random() - 0.5) * rh * 0.18;
+        pts.push({ x: px, y: py, dx: px, dy: py, ph: Math.random() * 6.28 });
+      }
+      function id(c, rr) { return rr * nc + c; }
+      for (var yy = 0; yy < nr - 1; yy++) for (var xx = 0; xx < nc - 1; xx++) {
+        var a = id(xx, yy), b = id(xx + 1, yy), c = id(xx, yy + 1), d = id(xx + 1, yy + 1);
+        if (yy % 2 === 0) { tris.push([a, c, b]); tris.push([b, c, d]); }
+        else { tris.push([a, c, d]); tris.push([a, d, b]); }
+      }
+      cols = tris.map(function (t, i) { return pal[(i * 40503 + (pts[t[0]].x > W * 0.55 ? 7 : 0)) % pal.length]; });
+      amb = [];
+      var n = Math.max(14, Math.min(30, Math.floor(W / 48)));
+      for (var i = 0; i < n; i++) amb.push({ x: Math.random() * W, y: Math.random() * H, s: 4 + Math.random() * 7, r: Math.random() * 3.14, vr: (Math.random() - 0.5) * 0.012, vy: 0.08 + Math.random() * 0.22, c: pal[i % pal.length], a: 0.18 + Math.random() * 0.3, ph: Math.random() * 6.28 });
+      tx.x = W * 0.62; tx.y = H * 0.38; mx.x = tx.x; mx.y = tx.y;
+    }
+    function blob(x, y, cx, cy, r) { return Math.exp(-(((x - cx) * (x - cx) + (y - cy) * (y - cy)) / (2 * r * r))); }
+    function draw(t) {
+      raf = 0;
+      if (!vis || document.hidden) return;
+      mx.x += (tx.x - mx.x) * 0.12; mx.y += (tx.y - mx.y) * 0.12;
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i], dx = p.x - mx.x, dy = p.y - mx.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+        var f = Math.max(0, 1 - d / 210), push = f * f * 18, an = Math.atan2(dy, dx);
+        p.dx = p.x + Math.cos(an) * push + Math.sin(t * 0.0012 + p.ph) * 1.2;
+        p.dy = p.y + Math.sin(an) * push + Math.cos(t * 0.0011 + p.ph) * 1.2;
+      }
+      var R = Math.min(W, H);
+      for (var k = 0; k < tris.length; k++) {
+        var tr = tris[k], A = pts[tr[0]], B = pts[tr[1]], C = pts[tr[2]];
+        var cx = (A.dx + B.dx + C.dx) / 3, cy = (A.dy + B.dy + C.dy) / 3;
+        var dd = Math.sqrt((cx - mx.x) * (cx - mx.x) + (cy - mx.y) * (cy - mx.y));
+        var near = Math.max(0, 1 - dd / 210), inn = Math.max(0, 1 - dd / 82);
+        var mass = Math.min(1, blob(cx, cy, W * 0.68, H * 0.42, R * 0.26) + blob(cx, cy, W * 0.56, H * 0.6, R * 0.2) * 0.8);
+        var rev = Math.min(1, near * 0.5 + inn * 0.35 + mass * 0.5), co = cols[k] || pal[0];
+        ctx.beginPath(); ctx.moveTo(A.dx, A.dy); ctx.lineTo(B.dx, B.dy); ctx.lineTo(C.dx, C.dy); ctx.closePath();
+        ctx.strokeStyle = 'rgba(' + co[0] + ',' + co[1] + ',' + co[2] + ',' + (0.08 + rev * 0.5).toFixed(3) + ')';
+        ctx.lineWidth = 0.8 + inn * 0.9 + mass * 1.1;
+        ctx.stroke();
+      }
+      for (var j = 0; j < amb.length; j++) {
+        var g = amb[j];
+        g.r += g.vr; g.y -= g.vy; g.x += Math.sin(t * 0.0006 + g.ph) * 0.18;
+        if (g.y < -14) { g.y = H + 12; g.x = Math.random() * W; }
+        var gd = Math.sqrt((g.x - mx.x) * (g.x - mx.x) + (g.y - mx.y) * (g.y - mx.y));
+        var gl = Math.max(0, 1 - gd / 220);
+        ctx.save(); ctx.translate(g.x, g.y); ctx.rotate(g.r);
+        ctx.beginPath(); ctx.moveTo(0, -g.s); ctx.lineTo(g.s * 0.9, g.s * 0.7); ctx.lineTo(-g.s * 0.9, g.s * 0.7); ctx.closePath();
+        ctx.strokeStyle = 'rgba(' + g.c[0] + ',' + g.c[1] + ',' + g.c[2] + ',' + (g.a + gl * 0.5).toFixed(3) + ')';
+        ctx.lineWidth = 1.2 + gl;
+        ctx.stroke(); ctx.restore();
+      }
+      if (vis) raf = requestAnimationFrame(draw);
+    }
+    function go() { if (vis && !document.hidden && !raf) raf = requestAnimationFrame(draw); }
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+    hero.addEventListener('pointermove', function (e) { var r = hero.getBoundingClientRect(); tx.x = e.clientX - r.left; tx.y = e.clientY - r.top; }, { passive: true });
+    window.addEventListener('resize', build);
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else go(); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; if (vis) go(); else stop(); }, { rootMargin: '160px 0px' }).observe(hero);
+    build(); go();
+  }
+  document.querySelectorAll('.cta-pill').forEach(function (b) {
+    b.addEventListener('pointerdown', function () { b.style.transform += ' scale(.96)'; });
+    b.addEventListener('pointerup', function () { b.style.transform = ''; });
+    b.addEventListener('pointerleave', function () { b.style.transform = ''; });
+  });
+})();
+</script>
+<script>(function(){var bg=document.querySelector('.scroll-bg');if(!bg||bg.dataset.done)return;bg.dataset.done='1';var run=false,red=matchMedia('(prefers-reduced-motion: reduce)').matches;if(red){bg.style.setProperty('--p','0.3');return;}function upd(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var raw=max>0?(window.scrollY||window.pageYOffset)/max:0;bg.style.setProperty('--p',raw.toFixed(4));run=false;}function trigger(){if(!run){run=true;requestAnimationFrame(upd);}}addEventListener('scroll',trigger,{passive:true});trigger();})();</script>
+</body>
+</html>
+
