@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Robot | STEAM Robotics · FTC 34690</title>
+<meta name="description" content="Scheda tecnica in progress del robot FTC di STEAM Robotics Team 34690: drivetrain, intake, scoring, sensori, Java e autonomia." />
+<link rel="canonical" href="https://steamrobotics.it/2026-27/robot/" />
+<meta property="og:title" content="Robot | STEAM Robotics" />
+<meta property="og:description" content="Drivetrain, intake, software e sensori: la scheda tecnica in progress del team 34690." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://steamrobotics.it/2026-27/robot/" />
+<meta property="og:image" content="https://steamrobotics.it/assets/og-placeholder.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+<style>
+@font-face { font-family: "Inter"; src: url("../../Font/inter/static/inter-latin-200-normal.woff2") format("woff2"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../../Font/inter/static/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../../Font/inter/static/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "VT323"; src: url("../../Font/vt323/vt323-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+h1, h2, h3, h1.big, h2.big { font-family: "VT323", "Courier New", monospace; font-weight: 400; letter-spacing: 0.02em; }
+:root { --void: #000; --bone: #fff; --ash: #9a9a9a; --mist: #bdbdbd; --iris: #8052ff; --saffron: #ffb829; --sans: Inter, system-ui, -apple-system, sans-serif; --ease: cubic-bezier(.32,.72,0,1); }
+* { box-sizing: border-box; } html { scroll-behavior: smooth; } body { margin: 0; background: #050506; color: var(--bone); font-family: var(--sans); font-weight: 200; -webkit-font-smoothing: antialiased; }
+/* Sfondo gradienti scroll-driven: fisso, tenue, non interferisce con lettura */
+.scroll-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:#050506;overflow:hidden;--p:0;}
+.scroll-bg::before{content:"";position:absolute;inset:-10%;background:
+radial-gradient(ellipse 55% 42% at calc(15% + var(--p)*60%) 18%,rgba(128,82,255,.20),transparent 70%),
+radial-gradient(ellipse 45% 36% at calc(85% - var(--p)*55%) 52%,rgba(255,184,41,.10),transparent 70%),
+radial-gradient(ellipse 60% 45% at calc(30% + var(--p)*40%) 88%,rgba(21,132,110,.14),transparent 70%),
+radial-gradient(ellipse 40% 32% at calc(70% - var(--p)*30%) 78%,rgba(217,47,122,.08),transparent 70%);filter:saturate(1.1);transition:background .1s linear;}
+.scroll-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.25) 35%,rgba(0,0,0,.35) 65%,rgba(0,0,0,.7));}
+header.menu,main,footer{position:relative;z-index:1;}
+@media(prefers-reduced-motion:reduce){.scroll-bg::before{background:radial-gradient(ellipse 55% 42% at 40% 20%,rgba(128,82,255,.16),transparent 70%),radial-gradient(ellipse 50% 40% at 70% 80%,rgba(21,132,110,.10),transparent 70%);}}
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 4rem); }
+
+
+
+.brand b { color: #fff; font-size: .85rem; font-weight: 400; } .brand small { color: var(--ash); font-size: .65rem; letter-spacing: .08em; }
+
+.links a { color: var(--ash); text-decoration: none; font-size: .85rem; padding: .6rem 1rem; border-radius: 999px; text-transform: uppercase; letter-spacing: .06em; } .links a:hover, .links a.active { color: #fff; }
+.cta { background: var(--iris); color: #fff; font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .025em; border-radius: 999px; padding: .9rem 1.5rem; text-decoration: none; }
+/* Hero stile prompt adattato: niente video, una sola nav (quella condivisa), copy bottom-left + CAD dettagliato */
+.ph-hero{position:relative;overflow:hidden;background:#000;border-bottom:1px solid rgba(255,255,255,.08);}
+.ph-hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 65% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 80% 70% at 65% 40%,#000 20%,transparent 75%);pointer-events:none;}
+.ph-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 68% 45%,rgba(128,82,255,.16),transparent 70%),radial-gradient(ellipse 30% 30% at 20% 80%,rgba(255,184,41,.07),transparent 70%);pointer-events:none;}
+.ph-fg{position:relative;z-index:1;display:flex;flex-direction:column;}
+.ph-body{display:block;padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(2rem,4vw,3rem);}
+.ph-copy{max-width:20rem;}
+.ph-badge{display:inline-flex;align-items:center;gap:.375rem;font-size:11.5px;font-weight:500;color:#a78bfa;text-decoration:none;margin-bottom:.75rem;}
+.ph-badge:hover{color:#c4b5fd;}
+.ph-badge .arr{display:inline-block;transition:transform .2s;}
+.ph-badge:hover .arr{transform:translateX(2px);}
+.ph-h1{font-family:"VT323","Courier New",monospace;font-size:clamp(3.5rem,9.5vw,6.2rem);line-height:1.05;font-weight:400;color:#fff;letter-spacing:0.02em;margin:0 0 .75rem;max-width:22ch;}
+.ph-sub{font-size:13px;color:rgba(255,255,255,.6);font-weight:400;margin:0 0 .75rem;line-height:1.55;}
+.ph-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:13px;font-weight:500;color:#a78bfa;border:1px solid rgba(167,139,250,.6);border-radius:999px;padding:.65rem 1.25rem;text-decoration:none;transition:all .2s;margin-bottom:.75rem;}
+.ph-cta:hover{background:var(--iris);color:#fff;border-color:var(--iris);}
+.ph-cta .arr{transition:transform .2s;}
+.ph-cta:hover .arr{transform:translateX(2px);}
+.ph-cad{position:relative;min-height:420px;}
+.robot-card{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:linear-gradient(180deg,rgba(24,24,27,.9),rgba(10,10,12,.95));overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.robot-top{display:flex;align-items:center;gap:.5rem;padding:.8rem 1rem;border-bottom:1px solid rgba(255,255,255,.08);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ash);}
+.robot-top i{width:8px;height:8px;border-radius:50%;background:#333;display:inline-block;}
+.robot-top i.on{background:var(--saffron);box-shadow:0 0 10px var(--saffron);animation:blink 1.8s infinite;}
+@keyframes blink{50%{opacity:.4;}}
+.robot-top .sp{margin-left:auto;color:var(--iris);border:1px solid rgba(128,82,255,.4);border-radius:999px;padding:.25rem .7rem;}
+.robot-svg{display:block;width:100%;height:auto;}
+.cad-tag{position:absolute;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:.35rem .7rem;white-space:nowrap;backdrop-filter:blur(6px);}
+.cad-tag b{color:var(--saffron);font-weight:600;}
+.cad-tag.iris{border-color:rgba(128,82,255,.5);}
+.robot-foot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;padding:.9rem 1rem;border-top:1px solid rgba(255,255,255,.08);}
+.meter small{display:block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ash);margin-bottom:.35rem;}
+.meter .bar{height:5px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden;}
+.meter .bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--iris),var(--saffron));animation:load 2.4s ease-in-out infinite alternate;}
+@keyframes load{from{width:34%;}to{width:78%;}}
+.spin{transform-origin:center;transform-box:fill-box;animation:spin 3s linear infinite;}
+.spin-rev{transform-origin:center;transform-box:fill-box;animation:spinrev 4s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes spinrev{to{transform:rotate(-360deg);}}
+.dash{stroke-dasharray:6 6;animation:dashmove 1.6s linear infinite;}
+@keyframes dashmove{to{stroke-dashoffset:-24;}}
+.scanline{animation:scan 3.2s ease-in-out infinite;}
+@keyframes scan{0%,100%{transform:translateY(0);opacity:.9;}50%{transform:translateY(120px);opacity:.3;}}
+.bob{animation:bob 3s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@media(prefers-reduced-motion:reduce){.spin,.spin-rev,.dash,.scanline,.bob,.meter .bar span{animation:none;}}
+section.block { padding: clamp(3rem, 7vw, 6rem) 0; }
+.kicker { color: var(--saffron); font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .025em; margin: 0 0 1rem; }
+h1.big, h2.big, .sec-heading { font-weight: 400; letter-spacing: -0.04em; line-height: 1.05; font-size: clamp(3.5rem, 9.5vw, 6.2rem); margin: 0 0 1rem; max-width: 22ch; font-family: "VT323", "Courier New", monospace; }
+.lead { color: var(--mist); font-size: 18px; line-height: 1.5; max-width: 62ch; margin: 0; }
+.ghost-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .9rem 0; text-decoration: none; }
+.ghost-row + .ghost-row { border-top: 1px solid rgba(255,255,255,.12); }
+.lbl { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ash); } .val { color: var(--bone); text-align: right; }
+.ghost-row p { color: var(--mist); font-size: .9rem; margin: .2rem 0 0; }
+.btn-row { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.75rem; }
+.ghost-link { color: var(--ash); font-size: .85rem; padding: .9rem .2rem; text-decoration: none; } .ghost-link:hover { color: #fff; }
+footer { padding: 3rem 0 4rem; } footer .mails a { color: var(--saffron); }
+footer nav a { display: inline-block; margin-right: 1rem; color: var(--ash); font-size: .85rem; text-decoration: none; } footer nav a:hover { color: #fff; }
+.sec-layout { display: grid; row-gap: 0; }
+.sec-heading { margin: 0 0 .4rem; }
+.sec-quote { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 400; font-family: "VT323", "Courier New", monospace; color: var(--bone); line-height: 1.25; margin: 0 0 1.8rem; max-width: 44ch; }
+.sec-quote::before { content: '\201C'; color: var(--saffron); margin-right: .1em; }
+.sec-quote::after  { content: '\201D'; color: var(--saffron); margin-left: .1em; }
+.cards-row { display: grid; gap: 1.25rem; }
+@media (min-width: 640px) { .cards-row { grid-template-columns: 1fr 1.65fr; } }
+.info-card { border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: 1.5rem 1.75rem; background: rgba(255,255,255,.03); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: border-color .25s ease, background .25s ease; }
+.info-card:hover { border-color: rgba(128,82,255,.35); background: rgba(128,82,255,.05); }
+.info-card.card-main { border-color: rgba(255,255,255,.12); }
+.info-card .card-label { font-size: 1.2rem; font-family: "VT323", "Courier New", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--saffron); margin: 0 0 .75rem; }
+.info-card .card-body { color: var(--mist); font-size: .92rem; line-height: 1.6; margin: 0; }
+.info-card .card-rows { display: flex; flex-direction: column; gap: 0; }
+.info-card .card-row { display: flex; justify-content: space-between; align-items: baseline; padding: .65rem 0; font-size: .88rem; }
+.info-card .card-row + .card-row { border-top: 1px solid rgba(255,255,255,.08); }
+.info-card .card-row-lbl { color: var(--ash); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+.info-card .card-row-val { color: var(--bone); }
+
+/* Menù condiviso Proposta D */
+.menu{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.68);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);}
+.menu-in{max-width:1280px;margin:0 auto;padding:.7rem clamp(1rem,5vw,2rem);display:flex;align-items:center;gap:.7rem;}
+.m-brand{display:flex;align-items:center;gap:.6rem;padding:.65rem 1.2rem .65rem .95rem;text-decoration:none;color:inherit;background:rgba(24,24,27,.9);border:1px solid rgba(255,255,255,.08);border-radius:999px;flex:none;}
+.m-brand b{color:#fff;font-size:.82rem;font-weight:400;letter-spacing:-0.01em;white-space:nowrap;}
+.m-brand small{color:#9a9a9a;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.m-nav{display:flex;align-items:center;gap:.15rem;padding:.4rem .55rem;background:rgba(24,24,27,.9);border:1px solid rgba(255,255,255,.08);border-radius:999px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;min-width:0;}
+.m-nav::-webkit-scrollbar{display:none;}
+.m-nav a{color:#9a9a9a;text-decoration:none;font-size:.76rem;font-weight:400;padding:.55rem .8rem;border-radius:999px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;flex:none;}
+.m-nav a:hover{color:#fff;}
+.m-nav a.on{color:#fff;background:rgba(255,255,255,.1);}
+.m-year{color:#ffb829;font-size:.7rem;letter-spacing:.1em;padding:.5rem .75rem;border:1px solid rgba(255,184,41,.4);border-radius:999px;white-space:nowrap;flex:none;}
+.m-cta{background:#fff;color:#000;font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:.8rem 1.3rem;text-decoration:none;flex:none;transition:transform .15s ease;}
+.m-cta:hover{transform:scale(1.04);}
+@media (max-width: 720px){
+  .menu-in{flex-wrap:wrap;}
+  .m-brand small{display:none;}
+  .m-nav{order:3;flex-basis:100%;}
+  .m-cta{margin-left:auto;font-size:.7rem;padding:.7rem 1.1rem;}
+}
+
+/* Striscia sponsor nel footer */
+.sp-strip{border-bottom:1px solid rgba(255,255,255,.08);padding:0 0 1.5rem;margin-bottom:1.5rem;}
+.sp-label{display:inline-block;color:#9a9a9a;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.9rem;text-decoration:none;}
+a.sp-label:hover{color:#fff;}
+.sp-view{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.sp-track{display:flex;width:max-content;animation:spmove 24s linear infinite;}
+.sp-strip:hover .sp-track{animation-play-state:paused;}
+@keyframes spmove{to{transform:translateX(-50%);}}
+.sp-group{display:flex;gap:.9rem;padding-right:.9rem;}
+.sp-logo{flex:none;border:1px dashed rgba(255,255,255,.22);border-radius:12px;padding:.85rem 1.6rem;color:rgba(255,255,255,.55);font-size:.78rem;letter-spacing:.12em;text-decoration:none;white-space:nowrap;}
+.sp-logo:hover{color:#fff;border-color:#fff;}
+.sp-logo.hot{border-style:solid;border-color:rgba(255,184,41,.5);color:#ffb829;}
+@media (prefers-reduced-motion: reduce){.sp-track{animation:none;flex-wrap:wrap;width:auto;}}
+/* Sfondo gradienti scroll-driven: fisso, tenue, non interferisce con lettura */
+.scroll-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:#050506;overflow:hidden;--p:0;}
+.scroll-bg::before{content:"";position:absolute;inset:-10%;background:radial-gradient(ellipse 55% 42% at calc(15% + var(--p)*60%) 18%,rgba(128,82,255,.20),transparent 70%),radial-gradient(ellipse 45% 36% at calc(85% - var(--p)*55%) 52%,rgba(255,184,41,.10),transparent 70%),radial-gradient(ellipse 60% 45% at calc(30% + var(--p)*40%) 88%,rgba(21,132,110,.14),transparent 70%),radial-gradient(ellipse 40% 32% at calc(70% - var(--p)*30%) 78%,rgba(217,47,122,.08),transparent 70%);filter:saturate(1.1);transition:background .1s linear;}
+.scroll-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.25) 35%,rgba(0,0,0,.35) 65%,rgba(0,0,0,.7));}
+header.menu,main,footer{position:relative;z-index:1;}
+@media(prefers-reduced-motion:reduce){.scroll-bg::before{background:radial-gradient(ellipse 55% 42% at 40% 20%,rgba(128,82,255,.16),transparent 70%),radial-gradient(ellipse 50% 40% at 70% 80%,rgba(21,132,110,.10),transparent 70%);}}
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 4rem); }
+</style>
+</head>
+<body>
+<div class="scroll-bg" aria-hidden="true"></div>
+<header class="menu"><div class="menu-in"><a class="m-brand" href="../" aria-label="STEAM Robotics home"><span><b>steam robotics</b><br /><small>ftc team 34690 · parma</small></span></a><nav class="m-nav" aria-label="navigazione"><a href="../">Stagione</a><a href="../team/">Team</a><a href="./" class="on">Robot</a><a href="../../sponsor/">Sponsor</a><a href="../outreach/">Stories</a><a href="../../news/">News</a><a href="../../contatti/">Contatti</a><span class="m-year" title="Selettore stagione (prossimamente)">2026-27</span></nav><a class="m-cta" href="../../sponsor/">diventa partner</a></div></header>
+<main>
+<section class="ph-hero" style="padding-top:4.5rem">
+<div class="ph-fg wrap">
+<div class="ph-body">
+<div class="ph-copy">
+<a class="ph-badge" href="#sottosistemi">Season robot · in progress <span class="arr">↗</span></a>
+<h1 class="ph-h1">season robot 2026/27</h1>
+<p class="ph-sub">Drivetrain, intake, lift e Java: la scheda si aggiorna costantemente man mano che i prototipi avanzano.</p>
+<a class="ph-cta" href="../../sponsor/">Sostieni il build <span class="arr">↗</span></a>
+</div>
+</div>
+</div>
+</section>
+<div class="wrap">
+<section class="block sec-layout" id="sottosistemi">
+  <h2 class="big sec-heading">target di stagione</h2>
+  <p class="sec-quote">prestazioni misurate, ogni grammo conta.</p>
+  <div class="cards-row">
+    <div class="info-card">
+      <p class="card-label">specifiche target</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">intake</span><span class="card-row-val" style="color:var(--saffron)">420 rpm</span></div>
+        <div class="card-row"><span class="card-row-lbl">lift</span><span class="card-row-val">1.2 m</span></div>
+        <div class="card-row"><span class="card-row-lbl">peso</span><span class="card-row-val">12 kg</span></div>
+      </div>
+    </div>
+    <div class="info-card card-main">
+      <p class="card-label">obiettivi tecnici</p>
+      <p class="card-body">Il robot 2026/27 punta sulla massima affidabilità meccanica e ripetibilità nel punteggio sia nella fase autonoma che in TeleOp. Prototipi rapidi e test sul campo guidano le decisioni CAD.</p>
+    </div>
+  </div>
+</section>
+<section class="block sec-layout">
+  <h2 class="big sec-heading">sottosistemi</h2>
+  <p class="sec-quote">tre cantieri, un solo robot affidabile.</p>
+  <div class="cards-row">
+    <div class="info-card">
+      <p class="card-label">reparti attivi</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">drivetrain</span><span class="card-row-val" style="color:var(--iris)">cad &amp; odometria</span></div>
+        <div class="card-row"><span class="card-row-lbl">intake</span><span class="card-row-val" style="color:var(--saffron)">test &amp; prototipi</span></div>
+        <div class="card-row"><span class="card-row-lbl">software</span><span class="card-row-val">java ftc sdk</span></div>
+      </div>
+    </div>
+    <div class="info-card card-main">
+      <p class="card-label">architettura robot</p>
+      <div class="card-rows">
+        <div class="card-row"><span class="card-row-lbl">drivetrain</span><span class="card-row-val" style="font-size:.85rem">mecanum 4wd · odometria 3 ruote</span></div>
+        <div class="card-row"><span class="card-row-lbl">intake &amp; scoring</span><span class="card-row-val" style="font-size:.85rem">presa a rulli · braccio telescopico</span></div>
+        <div class="card-row"><span class="card-row-lbl">software &amp; ai</span><span class="card-row-val" style="font-size:.85rem">apriltag · imu · road runner</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</main>
+<footer class="wrap"><div class="sp-strip"><a class="sp-label" href="../../sponsor/">sponsor · il tuo logo qui ↗</a><div class="sp-view"><div class="sp-track"><div class="sp-group"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div></div></div></div><p class="kicker">contatti</p><p class="mails"><a href="mailto:info@steamrobotics.it">info@steamrobotics.it</a></p><nav><a href="https://github.com/steamrobotics-pr" target="_blank" rel="noopener">github</a><a href="http://liceosteamparma.it/" target="_blank" rel="noopener">liceo steam</a><a href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener">first ftc</a><a href="index.html">home</a><a href="../../sponsor/">sponsor</a><a href="../outreach/">stories</a><a href="../../contatti/">contatti</a></nav><p><small>steam robotics · ftc team 34690 · parma · prima stagione 2026/27.</small></p></footer>
+<script>(function(){var bg=document.querySelector('.scroll-bg');if(!bg||bg.dataset.done)return;bg.dataset.done='1';var run=false,red=matchMedia('(prefers-reduced-motion: reduce)').matches;if(red){bg.style.setProperty('--p','0.3');return;}function upd(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var raw=max>0?(window.scrollY||window.pageYOffset)/max:0;bg.style.setProperty('--p',raw.toFixed(4));run=false;}function trigger(){if(!run){run=true;requestAnimationFrame(upd);}}addEventListener('scroll',trigger,{passive:true});trigger();})();</script>
+</body>
+</html>
