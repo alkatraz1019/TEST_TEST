@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stories | STEAM Robotics · FTC 34690</title>
+<meta name="description" content="Kickoff, workshop, outreach e competition day: le storie della prima stagione 2026/27 di STEAM Robotics FTC Team 34690." />
+<link rel="canonical" href="https://steamrobotics.it/2026-27/outreach/" />
+<meta property="og:title" content="Stories | STEAM Robotics" />
+<meta property="og:description" content="Eventi, workshop e outreach del team 34690." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://steamrobotics.it/2026-27/outreach/" />
+<meta property="og:image" content="https://steamrobotics.it/assets/og-placeholder.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+<style>
+@font-face { font-family: "Inter"; src: url("../../Font/inter/static/inter-latin-200-normal.woff2") format("woff2"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../../Font/inter/static/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../../Font/inter/static/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "VT323"; src: url("../../Font/vt323/vt323-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+:root { --void: #000; --bone: #fff; --ash: #9a9a9a; --mist: #bdbdbd; --iris: #8052ff; --saffron: #ffb829; --sans: Inter, system-ui, -apple-system, sans-serif; }
+* { box-sizing: border-box; } html { scroll-behavior: smooth; } body { margin: 0; background: var(--void); color: var(--bone); font-family: var(--sans); font-weight: 200; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h1.big { font-family: "VT323", "Courier New", monospace; font-weight: 400; letter-spacing: 0.02em; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 4rem); }
+
+
+
+.brand b { color: #fff; font-size: .85rem; font-weight: 400; } .brand small { color: var(--ash); font-size: .65rem; letter-spacing: .08em; }
+
+.links a { color: var(--ash); text-decoration: none; font-size: .85rem; padding: .6rem 1rem; border-radius: 999px; text-transform: uppercase; letter-spacing: .06em; } .links a:hover, .links a.active { color: #fff; }
+.cta { background: var(--iris); color: #fff; font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .025em; border-radius: 999px; padding: .9rem 1.5rem; text-decoration: none; }
+section.block { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+.kicker { color: var(--saffron); font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .025em; margin: 0 0 1rem; }
+h1.big, h2.big, .sec-heading { line-height: 1.02; font-size: clamp(3.5rem, 9vw, 6rem); margin: 0 0 1rem; max-width: 22ch; font-family: "VT323", "Courier New", monospace; font-weight: 400; }
+.lead { color: var(--mist); font-size: 18px; line-height: 1.5; max-width: 62ch; margin: 0; }
+.cyl-pin { position: relative; height: 320vh; }
+.cyl-stage { position: sticky; top: 0; height: 100vh; height: 100dvh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; user-select: none; perspective: 1350px; }
+.cyl-view { position: absolute; transform-style: preserve-3d; will-change: transform; }
+.cyl-card { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+.slice { position: absolute; inset: 0; border-radius: 16px; overflow: hidden; pointer-events: none; }
+.slice-mid { background: #808080; border: 1px solid #808080; }
+.slice-face { border: 1px solid rgba(255,255,255,.15); box-shadow: inset 0 1px 1px rgba(255,255,255,.15); }
+.slice-front { background: #0f0f0f; backface-visibility: hidden; }
+.slice-back { background: #0f0f0f; backface-visibility: hidden; }
+.face-bg { position: absolute; inset: 0; background: url('../../assets/story-placeholder.svg') center / cover no-repeat, #161616; }
+.face-veil { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.25) 55%, rgba(0,0,0,.35)); }
+.face-top { position: absolute; top: 0; left: 0; right: 0; padding: 16px 18px; display: flex; justify-content: space-between; align-items: baseline; }
+.face-kick { color: var(--saffron); font-size: .95rem; font-family: "VT323", monospace; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; }
+.face-idx { color: rgba(255,255,255,.6); font-size: .7rem; letter-spacing: .1em; }
+.face-title { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 20px; margin: 0; font-size: 3.2rem; font-family: "VT323", "Courier New", monospace; letter-spacing: 0.02em; line-height: 0.95; color: #fff; }
+.back-blur { position: absolute; inset: 0; background: url('../../assets/story-placeholder.svg') center / cover no-repeat, #0f0f0f; filter: blur(16px); transform: scale(1.15); }
+.back-body { position: absolute; inset: 0; padding: 18px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; }
+.back-body .lbl { color: var(--saffron); font-size: 1.1rem; font-family: "VT323", monospace; letter-spacing: .1em; text-transform: uppercase; }
+.back-body p { color: rgba(255,255,255,.82); font-size: .82rem; line-height: 1.5; margin: 0; }
+.back-body a { color: #fff; font-size: .85rem; font-weight: 600; text-decoration: none; pointer-events: auto; }
+.back-body a:hover { color: var(--saffron); }
+.back-soon { color: var(--ash); font-size: .85rem; }
+.cyl-hint { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); color: var(--ash); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; }
+footer { padding: 3rem 0 4rem; } footer .mails a { color: var(--saffron); }
+footer nav a { display: inline-block; margin-right: 1rem; color: var(--ash); font-size: .85rem; text-decoration: none; } footer nav a:hover { color: #fff; }
+@media (prefers-reduced-motion: reduce) { .cyl-pin { height: auto; } .cyl-stage { position: relative; height: auto; padding: 1rem 0 3rem; } }
+
+.sec-layout { display: grid; row-gap: 0; }
+.sec-heading { margin: 0 0 .4rem; }
+.sec-quote { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 400; font-family: "VT323", "Courier New", monospace; color: var(--bone); line-height: 1.25; margin: 0 0 1.8rem; max-width: 44ch; }
+.sec-quote::before { content: '\201C'; color: var(--saffron); margin-right: .1em; }
+.sec-quote::after  { content: '\201D'; color: var(--saffron); margin-left: .1em; }
+
+/* Menù condiviso Proposta D */
+.menu{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.68);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);}
+.menu-in{max-width:1280px;margin:0 auto;padding:.7rem clamp(1rem,5vw,2rem);display:flex;align-items:center;gap:.7rem;}
+.m-brand{display:flex;align-items:center;gap:.6rem;padding:.65rem 1.2rem .65rem .95rem;text-decoration:none;color:inherit;background:rgba(24,24,27,.9);border:1px solid rgba(255,255,255,.08);border-radius:999px;flex:none;}
+.m-brand b{color:#fff;font-size:.82rem;font-weight:400;letter-spacing:-0.01em;white-space:nowrap;}
+.m-brand small{color:#9a9a9a;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.m-nav{display:flex;align-items:center;gap:.15rem;padding:.4rem .55rem;background:rgba(24,24,27,.9);border:1px solid rgba(255,255,255,.08);border-radius:999px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;min-width:0;}
+.m-nav::-webkit-scrollbar{display:none;}
+.m-nav a{color:#9a9a9a;text-decoration:none;font-size:.76rem;font-weight:400;padding:.55rem .8rem;border-radius:999px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;flex:none;}
+.m-nav a:hover{color:#fff;}
+.m-nav a.on{color:#fff;background:rgba(255,255,255,.1);}
+.m-year{color:#ffb829;font-size:.7rem;letter-spacing:.1em;padding:.5rem .75rem;border:1px solid rgba(255,184,41,.4);border-radius:999px;white-space:nowrap;flex:none;}
+.m-cta{background:#fff;color:#000;font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:.8rem 1.3rem;text-decoration:none;flex:none;transition:transform .15s ease;}
+.m-cta:hover{transform:scale(1.04);}
+@media (max-width: 720px){
+  .menu-in{flex-wrap:wrap;}
+  .m-brand small{display:none;}
+  .m-nav{order:3;flex-basis:100%;}
+  .m-cta{margin-left:auto;font-size:.7rem;padding:.7rem 1.1rem;}
+}
+
+/* Striscia sponsor nel footer */
+.sp-strip{border-bottom:1px solid rgba(255,255,255,.08);padding:0 0 1.5rem;margin-bottom:1.5rem;}
+.sp-label{display:inline-block;color:#9a9a9a;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.9rem;text-decoration:none;}
+a.sp-label:hover{color:#fff;}
+.sp-view{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.sp-track{display:flex;width:max-content;animation:spmove 24s linear infinite;}
+.sp-strip:hover .sp-track{animation-play-state:paused;}
+@keyframes spmove{to{transform:translateX(-50%);}}
+.sp-group{display:flex;gap:.9rem;padding-right:.9rem;}
+.sp-logo{flex:none;border:1px dashed rgba(255,255,255,.22);border-radius:12px;padding:.85rem 1.6rem;color:rgba(255,255,255,.55);font-size:.78rem;letter-spacing:.12em;text-decoration:none;white-space:nowrap;}
+.sp-logo:hover{color:#fff;border-color:#fff;}
+.sp-logo.hot{border-style:solid;border-color:rgba(255,184,41,.5);color:#ffb829;}
+@media (prefers-reduced-motion: reduce){.sp-track{animation:none;flex-wrap:wrap;width:auto;}}
+/* Sfondo gradienti scroll-driven: fisso, tenue, non interferisce con lettura */
+.scroll-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:#050506;overflow:hidden;--p:0;}
+.scroll-bg::before{content:"";position:absolute;inset:-20%;background:radial-gradient(ellipse 55% 42% at 30% 18%,rgba(128,82,255,.20),transparent 70%),radial-gradient(ellipse 45% 36% at 70% 52%,rgba(255,184,41,.10),transparent 70%),radial-gradient(ellipse 60% 45% at 40% 88%,rgba(21,132,110,.14),transparent 70%),radial-gradient(ellipse 40% 32% at 60% 78%,rgba(217,47,122,.08),transparent 70%);transform:translate3d(0,calc(var(--p)*-60px),0);will-change:transform;}
+.scroll-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.25) 35%,rgba(0,0,0,.35) 65%,rgba(0,0,0,.7));}
+header.menu,main,footer{position:relative;z-index:1;}
+@media(prefers-reduced-motion:reduce){.scroll-bg::before{background:radial-gradient(ellipse 55% 42% at 40% 20%,rgba(128,82,255,.16),transparent 70%),radial-gradient(ellipse 50% 40% at 70% 80%,rgba(21,132,110,.10),transparent 70%);}}
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 4rem); }
+</style>
+</head>
+<body>
+<div class="scroll-bg" aria-hidden="true"></div>
+<header class="menu"><div class="menu-in"><a class="m-brand" href="../" aria-label="STEAM Robotics home"><span><b>steam robotics</b><br /><small>ftc team 34690 · parma</small></span></a><nav class="m-nav" aria-label="navigazione"><a href="../">Stagione</a><a href="../team/">Team</a><a href="../robot/">Robot</a><a href="../../sponsor/">Sponsor</a><a href="./" class="on">Stories</a><a href="../../news/">News</a><a href="../../contatti/">Contatti</a><span class="m-year" title="Selettore stagione (prossimamente)">2026-27</span></nav><a class="m-cta" href="../../sponsor/">diventa partner</a></div></header>
+<main style="padding-top:4.5rem">
+<section class="block wrap sec-layout">
+  <h2 class="big sec-heading">outreach stories</h2>
+  <p class="sec-quote">eventi, prove e momenti del team.</p>
+  <p class="lead" style="color:var(--mist);font-size:.92rem;margin-top:-1rem">Quattro capitoli in un cilindro 3D: scorri la pagina per farle ruotare, clicca una card per girarla e leggere la storia.</p>
+</section>
+<div class="cyl-pin" id="pin">
+<section class="cyl-stage" id="stage" aria-label="carousel storie">
+<div class="cyl-view" id="cylView"></div>
+<div class="cyl-hint">continua a scorrere · clicca la card per girarla</div>
+</section>
+</div>
+</main>
+<footer class="wrap"><div class="sp-strip"><a class="sp-label" href="../../sponsor/">sponsor · il tuo logo qui ↗</a><div class="sp-view"><div class="sp-track"><div class="sp-group"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div><div class="sp-group" aria-hidden="true"><a class="sp-logo hot" href="../../sponsor/">il tuo logo qui · gold</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · silver</a><a class="sp-logo" href="../../sponsor/">il tuo logo qui · bronze</a><a class="sp-logo" href="../../sponsor/">diventa sponsor ↗</a></div></div></div></div><p class="kicker">contatti</p><p class="mails"><a href="mailto:info@steamrobotics.it">info@steamrobotics.it</a></p><nav><a href="https://github.com/steamrobotics-pr" target="_blank" rel="noopener">github</a><a href="http://liceosteamparma.it/" target="_blank" rel="noopener">liceo steam</a><a href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener">first ftc</a><a href="../">stagione</a><a href="../robot/">robot</a><a href="../../sponsor/">sponsor</a><a href="../../contatti/">contatti</a></nav><p><small>steam robotics · ftc team 34690 · parma · prima stagione 2026/27.</small></p></footer>
+<script>
+(function () {
+  var stories = [
+    { kick: '2026 · kickoff', title: 'Kickoff & game analysis', text: 'Regolamento, priorità di punteggio, vincoli e rischio tecnico. Il lavoro si divide tra meccanica, software, elettronica e comunicazione.', link: '../../news/kickoff-2026/', cta: 'leggi ↗' },
+    { kick: '2026 · workshop', title: 'Workshop tecnico', text: 'CAD, prototipi rapidi, Java FTC e metodo di documentazione. Ogni prova produce misure, non solo opinioni.', link: null, cta: 'presto' },
+    { kick: '2026 · territorio', title: 'Outreach', text: 'Scuola, territorio e partner: open lab, presentazioni e collaborazioni STEM. Il progetto deve funzionare ed essere capito.', link: null, cta: 'presto' },
+    { kick: '2027 · evento', title: 'Competition day', text: 'Match, judging, portfolio e alleanze raccontati dal pit. In attesa della prima competizione ufficiale.', link: null, cta: 'presto' },
+    { ghost: true },
+    { ghost: true },
+    { ghost: true }
+  ];
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var view = document.getElementById('cylView');
+  var stage = document.getElementById('stage');
+  var pin = document.getElementById('pin');
+  var cardCount = stories.length;
+  var cardW = Math.min(380, Math.max(260, Math.round(window.innerWidth * 0.24 + 120)));
+  var cardH = Math.round(cardW / 1.59);
+  var layers = [-1.47, -0.73, 0, 0.73, 1.47];
+  function sizeView() {
+    cardW = Math.min(380, Math.max(260, Math.round(window.innerWidth * 0.24 + 120)));
+    cardH = Math.round(cardW / 1.59);
+    view.style.width = cardW + 'px';
+    view.style.height = cardH + 'px';
+    view.querySelectorAll('.cyl-card').forEach(function (c) { c.style.width = cardW + 'px'; c.style.height = cardH + 'px'; });
+  }
+  var realTotal = stories.filter(function (s) { return !s.ghost; }).length;
+  var realIdx = 0;
+  stories.forEach(function (s, i) {
+    var card = document.createElement('div');
+    card.className = 'cyl-card';
+    card.style.width = cardW + 'px';
+    card.style.height = cardH + 'px';
+    if (s.ghost) {
+      card.dataset.ghost = '1';
+      card.style.visibility = 'hidden';
+      view.appendChild(card);
+      return;
+    }
+    var num = realIdx++;
+    var html = '';
+    layers.forEach(function (z, li) {
+      if (li > 0 && li < layers.length - 1) {
+        html += '<div class="slice slice-mid" style="transform: translateZ(' + z + 'px)"></div>';
+      } else if (li === layers.length - 1) {
+        html += '<div class="slice slice-face slice-front" style="transform: translateZ(' + z + 'px)">'
+          + '<div class="face-bg"></div><div class="face-veil"></div>'
+          + '<div class="face-top"><span class="face-kick">' + s.kick + '</span><span class="face-idx">0' + (num + 1) + ' / 0' + realTotal + '</span></div>'
+          + '<h2 class="face-title">' + s.title + '</h2></div>';
+      } else {
+        var cta = s.link
+          ? '<a href="' + s.link + '">' + s.cta + '</a>'
+          : '<span class="back-soon">' + s.cta + '</span>';
+        html += '<div class="slice slice-face slice-back" style="transform: translateZ(' + z + 'px) rotateX(180deg)">'
+          + '<div class="back-blur"></div>'
+          + '<div class="back-body"><span class="lbl">' + s.kick + '</span><p>' + s.text + '</p>' + cta + '</div></div>';
+      }
+    });
+    card.innerHTML = html;
+    view.appendChild(card);
+  });
+  var cards = Array.prototype.slice.call(view.querySelectorAll('.cyl-card'));
+  var progress = 0, scrollTarget = 0, mx = 0, my = 0, tx = 0, ty = 0, raf = 0;
+  var flipT = cards.map(function () { return 0; });
+  var flipC = cards.map(function () { return 0; });
+  function requestFrame() {
+    if (!raf && !document.hidden) raf = requestAnimationFrame(frame);
+  }
+  function updateTarget() {
+    var r = pin.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var span = Math.max(1, r.height - vh);
+    var p = Math.max(0, Math.min(1, -r.top / span));
+    scrollTarget = p * (realTotal - 1);
+    requestFrame();
+  }
+  window.addEventListener('scroll', updateTarget, { passive: true });
+  cards.forEach(function (card, i) {
+    if (card.dataset.ghost) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function () { flipT[i] = flipT[i] ? 0 : 180; requestFrame(); });
+  });
+  function onMove(e) {
+    var rx = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+    var ry = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+    tx = Math.max(-1, Math.min(1, rx));
+    ty = Math.max(-1, Math.min(1, ry));
+    requestFrame();
+  }
+  window.addEventListener('mousemove', onMove, { passive: true });
+  window.addEventListener('touchmove', function (e) { if (e.touches[0]) onMove(e.touches[0]); }, { passive: true });
+  document.addEventListener('mouseleave', function () { tx = 0; ty = 0; });
+  window.addEventListener('resize', sizeView);
+  function frame() {
+    raf = 0;
+    progress += (scrollTarget - progress) * 0.08;
+    mx += (tx - mx) * 0.08;
+    my += (ty - my) * 0.08;
+    var h = stage.clientHeight;
+    var rounded = Math.round(progress);
+    var diff = progress - rounded;
+    var eased = Math.sign(diff) * Math.pow(Math.abs(diff) * 2, 4.2) / 2;
+    var active = rounded + eased;
+    var half = cardCount / 2;
+    var gap = 36, peek = -55, D = 1350;
+    for (var i = 0; i < cards.length; i++) {
+      var card = cards[i];
+      if (card.dataset.ghost) { card.style.visibility = 'hidden'; continue; }
+      var off = i - active;
+      while (off > half) off -= cardCount;
+      while (off < -half) off += cardCount;
+      var abs = Math.abs(off), sign = off === 0 ? 0 : (off > 0 ? 1 : -1);
+      if (abs > 3.0) { card.style.visibility = 'hidden'; continue; }
+      card.style.visibility = 'visible';
+      var y = 0, z = 0, rot = 0;
+      if (abs <= 1) {
+        var e1 = abs * abs * (3 - 2 * abs);
+        y = sign * e1 * (cardH + gap);
+        z = 400 + e1 * (220 - 400);
+        rot = e1 * 132;
+      } else if (abs <= 2) {
+        var t2 = abs - 1, e2 = t2 * t2 * (3 - 2 * t2);
+        var sE = D / (D + 60);
+        var yE = (h / 2 - peek) / sE - cardH / 2;
+        y = sign * ((cardH + gap) + e2 * (yE - (cardH + gap)));
+        z = 220 + e2 * (-60 - 220);
+        rot = 132 + e2 * (175 - 132);
+      } else {
+        var t3 = Math.min(abs - 2, 1), e3 = t3 * t3 * (3 - 2 * t3);
+        var s2 = D / (D + 60);
+        var y2 = (h / 2 - peek) / s2 - cardH / 2;
+        var s3 = D / (D + 250);
+        var y3 = (h / 2 + 100) / s3 + cardH / 2;
+        y = sign * (y2 + e3 * (y3 - y2));
+        z = -60 + e3 * (-250 + 60);
+        rot = 175 + e3 * (195 - 175);
+      }
+      var cf = Math.max(0, 1 - abs);
+      flipC[i] += (flipT[i] - flipC[i]) * 0.12;
+      var rX = sign * rot + (-my * 12 * cf) + flipC[i];
+      var rY = mx * 15 * cf;
+      card.style.zIndex = Math.round(z).toString();
+      card.style.transform = 'translateY(' + y.toFixed(2) + 'px) translateZ(' + z.toFixed(2) + 'px) rotateX(' + rX.toFixed(2) + 'deg) rotateY(' + rY.toFixed(2) + 'deg) rotateZ(-3deg)';
+    }
+    var activeMoving = Math.abs(scrollTarget - progress) > 0.0001 || Math.abs(tx - mx) > 0.0001 || Math.abs(ty - my) > 0.0001;
+    for (var k = 0; k < flipC.length; k++) { if (Math.abs(flipT[k] - flipC[k]) > 0.05) { activeMoving = true; break; } }
+    if (!document.hidden && activeMoving) raf = requestAnimationFrame(frame);
+  }
+  sizeView();
+  updateTarget();
+  window.addEventListener('resize', updateTarget);
+  if (reduced) {
+    cards.forEach(function (c, i) {
+      var off = (i - 0 + cardCount) % cardCount;
+      c.style.visibility = off > 2 ? 'hidden' : 'visible';
+      c.style.transform = 'translateY(' + (-off * (cardH + 36)) + 'px) translateZ(220px)';
+    });
+  } else {
+    raf = requestAnimationFrame(frame);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { if (raf) cancelAnimationFrame(raf); raf = 0; }
+      else if (!raf) raf = requestAnimationFrame(frame);
+    });
+  }
+})();
+</script>
+<script>(function(){var bg=document.querySelector('.scroll-bg');if(!bg||bg.dataset.done)return;bg.dataset.done='1';var run=false,red=matchMedia('(prefers-reduced-motion: reduce)').matches;if(red){bg.style.setProperty('--p','0.3');return;}function upd(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var raw=max>0?(window.scrollY||window.pageYOffset)/max:0;bg.style.setProperty('--p',raw.toFixed(4));run=false;}function trigger(){if(!run){run=true;requestAnimationFrame(upd);}}addEventListener('scroll',trigger,{passive:true});trigger();})();</script>
+</body>
+</html>
+
